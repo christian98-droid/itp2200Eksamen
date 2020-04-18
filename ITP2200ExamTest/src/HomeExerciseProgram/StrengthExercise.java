@@ -23,9 +23,14 @@ public class StrengthExercise extends Exercise {
     }
     public void setOperation(String operation){this.operation = operation;}
 
+    public int getIntensity(){
+        return this.intensity;
+    }
+
     @Override
     public String toString(){ //Overrider toString for å printe ut objekt som ønsket
-        return "Intensity: " + intensity + "\nDuration: " + duration + "\nRepetitions: " + repetitions + "\nSets: " + sets + "\nWeight to lift: " + weights +
-                "\nEquipment: " + equipment + "\nOperation: " + operation;
+        return "Strength Exercise" + "\n-------------------------" + "\nIntensity: " + intensity + "\nDuration: " + duration + "\nRepetitions: " + repetitions +
+                "\nSets: " + sets + "\nWeight to lift: " + weights +
+                "\nEquipment: " + equipment + "\nOperation: " + operation + "\n-------------------------";
     }
 }
