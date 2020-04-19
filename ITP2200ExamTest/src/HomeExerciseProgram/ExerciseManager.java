@@ -1,8 +1,6 @@
 package HomeExerciseProgram;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 
 public class ExerciseManager {
     public static void main(String[] args) { //La til en prøvetekst for å teste kode

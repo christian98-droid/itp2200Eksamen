@@ -7,19 +7,36 @@ public class Program{
     boolean balanced;
 
     public Program(ArrayList<Exercise> exercises){
-        // This method sorts the array based on intensity
+        //Requirement 1a: sets the intensityLevel of program to the highest of the exercises
+        setIntensityLevel(findHighestIntensity(exercises));
+        //Requirement 1d: doubles the total duration of Program (for added breaks)
+        setDuration(findTotalDuration(exercises));
+
+        //Requirement 1c: This method sorts the array based on intensity
         Collections.sort(exercises, new Comparator<Exercise>() {
             @Override
             public int compare(Exercise e1, Exercise e2) {
                 return e1.intensity - e2.intensity;
             }
         });
-        for(Exercise e : exercises){this.duration += e.duration * 2;}
+    }
+
+    public int findTotalDuration(ArrayList<Exercise> exercises){
+        int totalDuration = 0;
         for(Exercise e : exercises){
-            if(getIntensityLevel() < e.getIntensity()){
-                setIntensityLevel(e.getIntensity());
+            totalDuration += e.getDuration() * 2;
+        }
+        return totalDuration;
+    }
+
+    public int findHighestIntensity(ArrayList<Exercise> exercises) {
+        int highestIntensity = 0;
+        for (Exercise e : exercises) {
+            if (getIntensityLevel() < e.getIntensity()) {
+                highestIntensity = e.getIntensity();
             }
         }
+        return highestIntensity;
     }
 
     public boolean isBalanced() {
