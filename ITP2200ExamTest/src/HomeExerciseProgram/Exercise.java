@@ -19,3 +19,42 @@ abstract class Exercise {
     public int getSets(){return sets;}
 
    }
+
+
+   /*
+package homeExercisesPackage;
+
+public abstract class Exercise {
+
+    protected String eName;
+    protected String eDescription;
+    protected int intensity;
+    protected double duration;
+    protected int repetitions;
+    protected int sets;
+
+    //  Constructor
+    public Exercise(String eName, String eDescription, int intensity, int duration, int repetitions, int sets){
+
+        this.eName = eName;
+        this.eDescription = eDescription;
+        this.intensity = intensity;
+        this.duration = duration;
+        this.repetitions = repetitions;
+        this.sets = sets;
+    }
+
+    @Override
+    public String toString(){
+        String exOut = "Name of exercise:" + " " + eName + "\n"
+                + "intensity of exercise:"  +  " " + intensity + "\n"
+                + "Duration of exercise:" + " " + duration + "min" + "\n"
+                + "Repetitions:" + " " + repetitions + "\n"
+                + "Sets:" + " " + sets + "\n";
+
+        return exOut;
+
+    }
+}
+
+*/ 

@@ -34,3 +34,36 @@ public class StrengthExercise extends Exercise {
                 "\nEquipment: " + equipment + "\nOperation: " + operation + "\n-------------------------";
     }
 }
+
+/*
+
+package homeExercisesPackage;
+
+public class Strength extends Exercise {
+
+    private int weights;
+    private String equipment;
+
+    //Constructor 1
+    public Strength(String eName, String eDescription, int intensity, int duration, int repetitions, int sets, String equipment, int weights){
+        super(eName, eDescription, intensity, duration, repetitions, sets);
+
+        this.weights = weights;
+        this.equipment = equipment;
+
+    }
+    //Constructor 2 - (some exercises do not need weights)
+    public Strength(String eName, String eDescription, int intensity, int duration, int repetitions, int sets, String equipment){
+        super(eName, eDescription, intensity, duration, repetitions, sets);
+
+        this.equipment = equipment;
+    }
+
+    @Override
+    public String toString() {
+        String exOut = super.toString() + "Equipment:" + " " + equipment + "\n"
+        + "Weights:" + " " + weights + "kg" + "\n";
+        return exOut;
+    }
+}
+*/
