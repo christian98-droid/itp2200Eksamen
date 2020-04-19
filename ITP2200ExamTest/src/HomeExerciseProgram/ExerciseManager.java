@@ -19,7 +19,6 @@ public class ExerciseManager {
 
         Program p = new Program(exercises);
 
-
     }
 }
 
