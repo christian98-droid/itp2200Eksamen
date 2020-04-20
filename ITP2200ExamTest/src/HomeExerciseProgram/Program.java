@@ -6,7 +6,10 @@ public class Program{
     int intensityLevel; // (the highest intensity among the included exercises)
     boolean balanced;
 
+    ArrayList<Exercise> exerciseArrayList = new ArrayList<>();
+
     public Program(ArrayList<Exercise> exercises){
+        setExerciseArrayList(exercises);
         //Requirement 1a: sets the intensityLevel of program to the highest of the exercises
         setIntensityLevel(findHighestIntensity(exercises));
         //Requirement 1d: doubles the total duration of Program (for added breaks)
@@ -19,6 +22,14 @@ public class Program{
                 return e1.intensity - e2.intensity;
             }
         });
+    }
+
+    public ArrayList<Exercise> getExerciseArrayList() {
+        return exerciseArrayList;
+    }
+
+    public void setExerciseArrayList(ArrayList<Exercise> exerciseArrayList) {
+        this.exerciseArrayList = exerciseArrayList;
     }
 
     public int findTotalDuration(ArrayList<Exercise> exercises){

@@ -2,7 +2,7 @@ package HomeExerciseProgram;
 
 import java.util.Comparator;
 
-abstract class Exercise {
+public abstract class Exercise {
     public int intensity; // Thinking we can use a 1-10 scale for intensity where 10 is the highest
     public int duration; //total minutes for whole exercise
     public int repetitions; // Number of reps in each set
