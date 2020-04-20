@@ -1,12 +1,5 @@
 package HomeExerciseProgram;
-
-public class Person {
-}
-
-/*
-
-package homeExercisesPackage;
-        import java.util.ArrayList;
+import java.util.ArrayList;
 
 public class Person {
 
@@ -36,5 +29,3 @@ public class Person {
         return personalPreference;
     }
 }
-
-*/
