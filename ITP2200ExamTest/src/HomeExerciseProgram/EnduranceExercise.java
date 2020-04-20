@@ -1,19 +1,11 @@
 package HomeExerciseProgram;
 
 public class EnduranceExercise extends Exercise {
-    public EnduranceExercise() {
-    }
-}
-
-/*
-package homeExercisesPackage;
-
-public class Endurance extends Exercise {
 
     private String equipment;
 
     //Constructor
-    public Endurance(String eName, String eDescription, int intensity, int duration, int repetitions, int sets, String equipment) {
+    public EnduranceExercise(String eName, String eDescription, int intensity, int duration, int repetitions, int sets, String equipment) {
         super(eName, eDescription, intensity, duration, repetitions, sets);
 
         this.equipment = equipment;
@@ -25,4 +17,3 @@ public class Endurance extends Exercise {
         return exOut;
     }
 }
-*/ 

@@ -4,8 +4,8 @@ public class StrengthExercise extends Exercise {
     public double weights; // Number of kilograms to use (changed to double due to possible decimal usage)
     public String equipment; // What equipment do you need
 
-    public StrengthExercise(String eName, String eDescription, int intensity, int duration, int repetitions, int sets, int weights, String equipment){
-        
+    /*public StrengthExercise(String eName, String eDescription, int intensity, int duration, int repetitions, int sets, int weights, String equipment){
+
         super.setName(eName);
         super.setDescription(eDescription);
         super.setIntensity(intensity);
@@ -14,6 +14,15 @@ public class StrengthExercise extends Exercise {
         super.setSets(sets);
         setWeights(weights);
         setEquipment(equipment);
+    }
+*/
+    //Constructor 1
+    public StrengthExercise(String eName, String eDescription, int intensity, int duration, int repetitions, int sets, String equipment, int weights){
+        super(eName, eDescription, intensity, duration, repetitions, sets);
+
+        this.weights = weights;
+        this.equipment = equipment;
+
     }
 
     public void setWeights(double weight){

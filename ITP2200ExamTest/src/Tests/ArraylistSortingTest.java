@@ -1,3 +1,4 @@
+/*
 package Tests;
 
 import HomeExerciseProgram.Exercise;
@@ -11,9 +12,9 @@ import static org.junit.Assert.assertTrue;
 
 public class ArraylistSortingTest {
     public static void main(String[] args){
-        StrengthExercise s1 = new StrengthExercise(8,5,10,3,30,"Barbell","Lift the barbell from shoulder-height and up");
-        StrengthExercise s2 = new StrengthExercise(9,7,10,3,50, "dumbbell", "Lift high");
-        StrengthExercise s3 = new StrengthExercise(10,10,8,3,70,"Barbell", "Deadlifts");
+        StrengthExercise s1 = new StrengthExercise(8,5,10,3,30,1,"Lift the barbell from shoulder-height and up", 33);
+        StrengthExercise s2 = new StrengthExercise(9,7,10,3,50, 12, "Lift high",77);
+        StrengthExercise s3 = new StrengthExercise(10,10,8,3,70,12, "Deadlifts", 88);
 
 
         ArrayList<Exercise> exercises = new ArrayList<>();
@@ -31,3 +32,4 @@ public class ArraylistSortingTest {
         assertTrue(intensitySortedCheck == 8);
     }
 }
+*/

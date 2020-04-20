@@ -22,22 +22,8 @@ public abstract class Exercise {
     public int getRepetitions(){return repetitions;}
     public int getSets(){return sets;}
 
-   }
-
-
-   /*
-package homeExercisesPackage;
-
-public abstract class Exercise {
-
-    protected String eName;
-    protected String eDescription;
-    protected int intensity;
-    protected double duration;
-    protected int repetitions;
-    protected int sets;
-
     //  Constructor
+
     public Exercise(String eName, String eDescription, int intensity, int duration, int repetitions, int sets){
 
         this.eName = eName;
@@ -59,6 +45,5 @@ public abstract class Exercise {
         return exOut;
 
     }
-}
 
-*/ 
+   }
