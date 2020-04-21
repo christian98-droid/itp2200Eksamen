@@ -8,8 +8,11 @@ public class BalanceExercise extends Exercise {
     public BalanceExercise(String eName, String eDescription, int intensity, int duration, int repetitions, int sets, String equipment) {
         super(eName, eDescription, intensity, duration, repetitions, sets);
 
-        this.equipment = equipment;
+        setEquipment(equipment);
     }
+
+    //Setter
+    public void setEquipment(String equipment){this.equipment = equipment;}
 
     @Override
     public String toString() {

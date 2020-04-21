@@ -10,39 +10,39 @@ public abstract class Exercise {
     public int repetitions; // Number of reps in each set
     public int sets; // Number of sets
 
+    //  Constructor
+    public Exercise(String eName, String eDescription, int intensity, int duration, int repetitions, int sets) {
+
+        setName(eName);
+        setDescription(eDescription);
+        setIntensity(intensity);
+        setDuration(duration);
+        setRepetitions(repetitions);
+        setSets(sets);
+
+    }
+
+    //Setter
     public void setName(String eName){this.eName = eName;}
     public void setDescription(String eDescription){this.eDescription = eDescription;}
     public void setIntensity(int intensity){this.intensity = intensity;}
     public void setDuration(int minutes){this.duration = minutes;}
-    public void setRepetitions(int reps){this.repetitions = reps;}
+    public void setRepetitions(int reps){ this.repetitions = reps;}
     public void setSets(int sets){this.sets = sets;}
 
+    //Getter
     public int getIntensity(){return intensity;}
     public int getDuration(){return duration;}
     public int getRepetitions(){return repetitions;}
     public int getSets(){return sets;}
 
-    //  Constructor
-
-    public Exercise(String eName, String eDescription, int intensity, int duration, int repetitions, int sets){
-
-        this.eName = eName;
-        this.eDescription = eDescription;
-        this.intensity = intensity;
-        this.duration = duration;
-        this.repetitions = repetitions;
-        this.sets = sets;
-    }
-
     @Override
     public String toString(){
-        String exOut = "Name of exercise:" + " " + eName + "\n"
+        return "Name of exercise:" + " " + eName + "\n"
                 + "intensity of exercise:"  +  " " + intensity + "\n"
                 + "Duration of exercise:" + " " + duration + "min" + "\n"
                 + "Repetitions:" + " " + repetitions + "\n"
                 + "Sets:" + " " + sets + "\n";
-
-        return exOut;
 
     }
 

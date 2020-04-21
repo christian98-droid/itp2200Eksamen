@@ -1,8 +1,13 @@
 package HomeExerciseProgram;
+import javax.swing.*;
 import java.util.Scanner;
 import java.util.ArrayList;
+import java.util.Locale;
 
 //                                 Scanner in, (not finished just a start)
+
+// TODO: Gjøre slik at bruker kan lage hele programmer, ikke bare enkelt treninger.
+
 
 public class ExerciseManager {
 
@@ -12,73 +17,109 @@ public class ExerciseManager {
         Scanner userIn = new Scanner(System.in);
         String response = "";
         Boolean notDone = true;
+        Boolean notDoone = true;
 
+
+        System.out.println("\n Welcome to Exercise Manager \n");
+
+        // Nested switch statements
         while (notDone) {
 
-            System.out.println("Create strength exercise - (S)");
-            System.out.println("Create endurance exercise - (E)");
-            System.out.println("Create flexibility exercise - (F)");
-            System.out.println("Create balance exercise - (B)");
-            System.out.println("Print out program - (P)");
+            System.out.println("Create own or use existing - (O) // (E)" + "\n");
             System.out.println("Quit program - (Q)");
 
             response = userIn.nextLine();
 
-            switch (response) {
+            // toUpperCase so the user user response is not case-sensitive
+            switch (response.toUpperCase()) {
 
-                case "S":
+                // CASE E. User has chosen to create own program.
+                case "O":
+                    while (notDoone) {
+                        System.out.println("Create strength exercise - (S)");
+                        System.out.println("Create endurance exercise - (E)");
+                        System.out.println("Create flexibility exercise - (F)");
+                        System.out.println("Create balance exercise - (B)");
+                        System.out.println("Print out program - (P)" + "\n");
+                        System.out.println("Quit program - (Q)");
 
-                    StrengthExercise userStrengthExercise = generateStrengthExercise(userIn);
-                    userExercises.add(userStrengthExercise);
-                    break;
+                        response = userIn.nextLine();
 
-                case "E":
+                        switch (response.toUpperCase()) {
 
-                    EnduranceExercise userEnduranceExercise = generateEnduranceExercise(userIn);
-                    userExercises.add(userEnduranceExercise);
-                    break;
+                            case "S":
 
-                case "F":
+                                StrengthExercise userStrengthExercise = generateStrengthExercise(userIn);
+                                userExercises.add(userStrengthExercise);
+                                break;
 
-                    FlexibilityExercise userFlexibilityExercise = generateFlexibilityExercise(userIn);
-                    userExercises.add(userFlexibilityExercise);
-                    break;
+                            case "E":
+
+                                EnduranceExercise userEnduranceExercise = generateEnduranceExercise(userIn);
+                                userExercises.add(userEnduranceExercise);
+                                break;
+
+                            case "F":
+
+                                FlexibilityExercise userFlexibilityExercise = generateFlexibilityExercise(userIn);
+                                userExercises.add(userFlexibilityExercise);
+                                break;
 
 
-                case "B":
+                            case "B":
 
-                    BalanceExercise userBalanceExercise = generateBalanceExercise(userIn);
-                    userExercises.add(userBalanceExercise);
-                    break;
+                                BalanceExercise userBalanceExercise = generateBalanceExercise(userIn);
+                                userExercises.add(userBalanceExercise);
+                                break;
 
-                case "P":
+                            case "P":
 
-                    //for(int i = 0; i > userExercises.size(); i++){
 
-                    //  System.out.println(userExercises.get(i).toString());
-                    //}
+                                for (Exercise p : userExercises) {
 
-                    for (Exercise p : userExercises) {
+                                    System.out.println(p.toString());
 
-                        System.out.println(p.toString());
+                                }
+
+                                break;
+
+                            case "Q":
+
+                                notDone = false;
+                                notDoone = false;
+
+                                System.out.println("Exercise Manager is quitting");
+                                break;
+
+                            default:
+                                System.out.println("User input is unknown");
+                                break;
+                        }
 
                     }
 
                     break;
+            // CASE E. User has chosen existing program.
+                case "E":
 
-                case "Q":
+                    // TODO: Skrive inn navn, og komme med ferdigproduserte programmer.
+                    System.out.println("Her kan bruker hente ferdig trenings programmer");
 
-                    notDone = false;
-                    System.out.println("Exercise Manager is quitting");
                     break;
+
+                    case "Q":
+                        notDone = false;
+                        System.out.println("Exercise Manager is quitting");
+                        break;
 
                 default:
                     System.out.println("User input is unknown");
                     break;
             }
-        }
-    }
 
+        }
+
+    }
 
     // Can be tested to prevent user errors.
     private static String generateExerciseName(Scanner systemIn) {
@@ -211,4 +252,5 @@ public class ExerciseManager {
         return userBalanceExercise;
 
     }
+
 }

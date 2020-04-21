@@ -1,14 +1,14 @@
 package HomeExerciseProgram;
 import java.util.*;
 
-public class Program{
-    int duration; //total duration * 2 (rest)
-    int intensityLevel; // (the highest intensity among the included exercises)
+public class Program {
+    int duration;
+    int intensityLevel;
     boolean balanced;
 
     ArrayList<Exercise> exerciseArrayList = new ArrayList<>();
 
-    public Program(ArrayList<Exercise> exercises){
+    public Program(ArrayList<Exercise> exercises) {
         setExerciseArrayList(exercises);
         //Requirement 1a: sets the intensityLevel of program to the highest of the exercises
         setIntensityLevel(findHighestIntensity(exercises));
@@ -17,6 +17,7 @@ public class Program{
 
         //Requirement 1c: This method sorts the array based on intensity
         Collections.sort(exercises, new Comparator<Exercise>() {
+
             @Override
             public int compare(Exercise e1, Exercise e2) {
                 return e1.intensity - e2.intensity;
@@ -32,9 +33,9 @@ public class Program{
         this.exerciseArrayList = exerciseArrayList;
     }
 
-    public int findTotalDuration(ArrayList<Exercise> exercises){
+    public int findTotalDuration(ArrayList<Exercise> exercises) {
         int totalDuration = 0;
-        for(Exercise e : exercises){
+        for (Exercise e : exercises) {
             totalDuration += e.getDuration() * 2;
         }
         return totalDuration;
@@ -74,7 +75,7 @@ public class Program{
         this.intensityLevel = intensityLevel;
     }
 }
-
+//
 
 /*
 package homeExercisesPackage;
@@ -95,9 +96,6 @@ public class Program {
         this.duration = duration;
         this.intensityLevel = intensityLevel;
     }
-
-
-
 
     @Override
     public String toString() {
