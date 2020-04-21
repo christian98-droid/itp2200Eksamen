@@ -16,7 +16,6 @@ public class Person {
         setPreferredExercise(preferredExercise);
         setAcceptableIntensity(acceptableIntensity);
         setCurrentProgram(currentProgram);
-
     }
 
     // Setter

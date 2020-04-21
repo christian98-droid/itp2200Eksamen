@@ -29,8 +29,24 @@ public class Program {
         return exerciseArrayList;
     }
 
-    public void setExerciseArrayList(ArrayList<Exercise> exerciseArrayList) {
-        this.exerciseArrayList = exerciseArrayList;
+
+    // Setter
+    public void setExerciseArrayList(ArrayList<Exercise> exerciseArrayList) {this.exerciseArrayList = exerciseArrayList;}
+    public void setDuration(int duration) {
+        this.duration = duration;
+    }
+    public void setBalanced(boolean balanced) {
+        this.balanced = balanced;
+    }
+    public void setIntensityLevel(int intensityLevel) {this.intensityLevel = intensityLevel;}
+
+    // Getter
+    public int getDuration() {return duration;}
+    public int getIntensityLevel() {return intensityLevel;}
+
+
+    public boolean isBalanced() {
+        return balanced;
     }
 
     public int findTotalDuration(ArrayList<Exercise> exercises) {
@@ -51,30 +67,19 @@ public class Program {
         return highestIntensity;
     }
 
-    public boolean isBalanced() {
-        return balanced;
+
+    @Override
+    public String toString() {
+
+                return "Program duration:" + " " + duration + "min" + "\n"
+                + "Intensity of program: " + " " + intensityLevel + "\n"
+                + "Is balanced" + " " + balanced +"\n" + "\n" + exerciseArrayList;
+
     }
 
-    public void setBalanced(boolean balanced) {
-        this.balanced = balanced;
-    }
-
-    public int getDuration() {
-        return duration;
-    }
-
-    public void setDuration(int duration) {
-        this.duration = duration;
-    }
-
-    public int getIntensityLevel() {
-        return intensityLevel;
-    }
-
-    public void setIntensityLevel(int intensityLevel) {
-        this.intensityLevel = intensityLevel;
-    }
 }
+
+
 //
 
 /*

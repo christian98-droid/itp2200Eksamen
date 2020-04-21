@@ -22,7 +22,6 @@ public class EnduranceExercise extends Exercise {
 
     @Override
     public String toString() {
-        String exOut = super.toString() + "Equipment:" + " " + equipment + "\n";
-        return exOut;
+        return "Endurance exercise"+ "\n" + super.toString() + "Equipment:" + " " + equipment + "\n" + "\n";
     }
 }
