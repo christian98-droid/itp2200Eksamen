@@ -10,6 +10,7 @@ public class Person {
     private int acceptableIntensity;
     private Program currentProgram;
 
+    //Constructor
     public Person(String fName, String lName, String preferredExercise, int acceptableIntensity, Program currentProgram){
         setfName(fName);
         setlName(lName);
@@ -17,6 +18,15 @@ public class Person {
         setAcceptableIntensity(acceptableIntensity);
         setCurrentProgram(currentProgram);
     }
+
+    //Constructor minus currentProgram
+    public Person(String fName, String lName, String preferredExercise, int acceptableIntensity){
+        setfName(fName);
+        setlName(lName);
+        setPreferredExercise(preferredExercise);
+        setAcceptableIntensity(acceptableIntensity);
+    }
+
 
     // Setter
     public void setfName(String fName){this.fName = fName;}
@@ -35,7 +45,7 @@ public class Person {
         String personalPreference = "Name:" + " " +fName + " " + lName + "\n" + "\n"
                 + "Preferred exercise:" + " "+ preferredExercise + "\n"
                 + "Preferred intensity:" + " " + acceptableIntensity + "\n"
-                + "Current program:" + " " + currentProgram + "\n";
+                + "Current program:" + "\n" + "\n" + currentProgram + "\n";
 
         return personalPreference;
     }
