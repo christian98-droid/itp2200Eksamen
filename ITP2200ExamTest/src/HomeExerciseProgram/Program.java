@@ -2,33 +2,29 @@ package HomeExerciseProgram;
 import java.util.*;
 
 public class Program {
-    int duration;
-    int intensityLevel;
+    int duration; //Total duration of all exercises times 2
+    int intensityLevel; //The highest intensity of all the exercises in the program
     boolean balanced;
 
     ArrayList<Exercise> exerciseArrayList = new ArrayList<>();
 
     public Program(ArrayList<Exercise> exercises) {
         setExerciseArrayList(exercises);
+
         //Requirement 1a: sets the intensityLevel of program to the highest of the exercises
         setIntensityLevel(findHighestIntensity(exercises));
+
         //Requirement 1d: doubles the total duration of Program (for added breaks)
         setDuration(findTotalDuration(exercises));
 
         //Requirement 1c: This method sorts the array based on intensity
         Collections.sort(exercises, new Comparator<Exercise>() {
-
             @Override
             public int compare(Exercise e1, Exercise e2) {
                 return e1.intensity - e2.intensity;
             }
         });
     }
-
-    public ArrayList<Exercise> getExerciseArrayList() {
-        return exerciseArrayList;
-    }
-
 
     // Setter
     public void setExerciseArrayList(ArrayList<Exercise> exerciseArrayList) {this.exerciseArrayList = exerciseArrayList;}
@@ -43,7 +39,9 @@ public class Program {
     // Getter
     public int getDuration() {return duration;}
     public int getIntensityLevel() {return intensityLevel;}
-
+    public ArrayList<Exercise> getExerciseArrayList() {
+        return exerciseArrayList;
+    }
 
     public boolean isBalanced() {
         return balanced;
@@ -60,7 +58,7 @@ public class Program {
     public int findHighestIntensity(ArrayList<Exercise> exercises) {
         int highestIntensity = 0;
         for (Exercise e : exercises) {
-            if (getIntensityLevel() < e.getIntensity()) {
+            if (highestIntensity < e.getIntensity()){
                 highestIntensity = e.getIntensity();
             }
         }

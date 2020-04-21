@@ -30,6 +30,8 @@ public class Person {
     public int getAcceptableIntensity(){return acceptableIntensity;}
     public Program getCurrentProgram(){return currentProgram;}
 
+
+
     @Override
     public String toString(){
         String personalPreference = "Name:" + " " +fName + " " + lName + "\n" + "\n"
