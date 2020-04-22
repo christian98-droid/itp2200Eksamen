@@ -89,6 +89,7 @@ public class ExerciseManager {
         // Nested switch statements
         while (notDone) {
 
+            // TODO : TEST // generateUser ber brukeren taste inn intLevel, som ikke kan være høyere enn 10, ellers feil lenger ned..
             Person newPerson = generateUser(userIn);
 
             System.out.println("Create own or use existing - (O) // (E)" + "\n");
@@ -96,7 +97,7 @@ public class ExerciseManager {
 
             response = userIn.nextLine();
 
-            // TODO : SIMEN TEST // toUpperCase so the user user response is not case-sensitive
+            // TODO : TEST // liten/stor bokstav. toUpperCase so the user user response is not case-sensitive.
             switch (response.toUpperCase()) {
 
                 // CASE O. User has chosen to create own program.
@@ -165,7 +166,7 @@ public class ExerciseManager {
                     break;
             // CASE E. User has chosen existing program.
                 case "E":
-
+                    // TODO : TEST // hvis intLevel er over 10, blir det feil her. Må løses når brukeren taster det inn i starten.
                             switch (newPerson.getAcceptableIntensity()){
                                 case 1:
                                     newPerson.setCurrentProgram(program1);
@@ -229,7 +230,7 @@ public class ExerciseManager {
 
     }
 
-    // TODO : SIMEN TEST // Prevent error when typing in wrong data type.
+    // TODO : SIMEN TEST // Prevent error when typing in wrong data type. Hvis brukeren taster inn String istedenfor int krasjer det. Men int istedenfor String går.
     private static String generateExerciseName(Scanner systemIn) {
 
         System.out.println("Enter name of exercise:");
@@ -405,9 +406,5 @@ public class ExerciseManager {
         return userPerson;
 
     }
-
-
-
-
 
 }
