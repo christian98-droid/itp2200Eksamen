@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
-public class ProgramTest {
+public class ProgramTest { //TODO lage flere inputs og teste for flere bugs
 
     //Requirement 1c. Each program has the exercises sorted in order of increasing intensity.
     @Test
@@ -98,5 +98,9 @@ public class ProgramTest {
         int result = p.findTotalDuration(exercises);
 
         assertTrue(expectedResult == result);
+    }
+    @Test
+    public void balancedProgramCheck(){
+        //TODO
     }
 }

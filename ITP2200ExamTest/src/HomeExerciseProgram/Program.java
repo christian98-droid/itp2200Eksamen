@@ -11,6 +11,10 @@ public class Program {
     public Program(ArrayList<Exercise> exercises) {
         setExerciseArrayList(exercises);
 
+        //Requirement 1b: Each program keeps account of whether or not it is balanced. A balanced
+        //program has at least one exercise of each type.
+        setBalanced(balancedProgramCheck(exercises));
+
         //Requirement 1a: sets the intensityLevel of program to the highest of the exercises
         setIntensityLevel(findHighestIntensity(exercises));
 
@@ -63,6 +67,23 @@ public class Program {
             }
         }
         return highestIntensity;
+    }
+
+    public boolean balancedProgramCheck(ArrayList<Exercise> exercises){
+        boolean s = false;
+        boolean b = false;
+        boolean f = false;
+        boolean e = false;
+
+        boolean balanced = false;
+        for(Exercise ex : exercises){
+            if(ex instanceof StrengthExercise){s = true;}
+            if(ex instanceof BalanceExercise){b = true;}
+            if(ex instanceof FlexibilityExercise){f = true;}
+            if(ex instanceof EnduranceExercise){e = true;}
+        }
+        if(s == true && b == true && f == true && e == true){balanced=true;}
+        return balanced;
     }
 
 
