@@ -14,35 +14,53 @@ public class ProgramTest { //TODO lage flere inputs og teste for flere bugs
     //Requirement 1c. Each program has the exercises sorted in order of increasing intensity.
     @Test
     public void arraySortedByIntensityTest(){
-        //Input a number from 1-10, with the lowest number NOT in the first int
-        int i1 = 9;
-        int i2 = 3;
-        int i3 = 10;
-        int i4 = 1;
-
-        //Write the variable with the highest intensity
-        int expectedResult = i4;
-
-        StrengthExercise se1 = new StrengthExercise("Benchpress", "x", i1,5,8,3,"x",70);
-        EnduranceExercise ee1 = new EnduranceExercise("Intervalls", "x",i2,6,10,0,"x");
-        FlexibilityExercise fe1 = new FlexibilityExercise("Stretch", "x",i3,10,0,0,"x");
-        BalanceExercise be1 = new BalanceExercise("Jumprope","x",i4,5,0,3,"x");
+        StrengthExercise se1 = new StrengthExercise("Benchpress", "x", 0,5,8,3,"x",70);
+        EnduranceExercise ee1 = new EnduranceExercise("Intervalls", "x",0,6,10,0,"x");
+        FlexibilityExercise fe1 = new FlexibilityExercise("Stretch", "x",0,10,0,0,"x");
+        BalanceExercise be1 = new BalanceExercise("Jumprope","x",0,5,0,3,"x");
 
         ArrayList<Exercise> exercises = new ArrayList<>();
 
-        // Adding the exercises with higher intensity first to check if they get sorted
         exercises.add(se1);
         exercises.add(ee1);
         exercises.add(fe1);
         exercises.add(be1);
 
+        /**
+         * Use these setters for test-input
+         */
+        exercises.get(0).setIntensity(9);
+        exercises.get(1).setIntensity(4);
+        exercises.get(2).setIntensity(10);
+        exercises.get(3).setIntensity(7);
+        // TODO fikse at bruker ikke kan kræsje programmet ved å taste inn bokstaver istedenfor tall
+        //TODO fikse at bruker ikke kan putte inn større tall enn 10 eller mindre enn 1
+
+        //variables for print output
+        int a = exercises.get(0).getIntensity();
+        int b = exercises.get(1).getIntensity();
+        int c = exercises.get(2).getIntensity();
+        int d = exercises.get(3).getIntensity();
+
         Program p = new Program(exercises);
 
-        int index0intensity = p.getExerciseArrayList().get(0).getIntensity();
+        boolean sorted = true;
 
-        // The object with the lowest intensity should now be in the first index-spot -
-        // Expected value = 1 (the lowest number you input at the top)
-        assertTrue(index0intensity == expectedResult);
+        for(int i=0;i<p.getExerciseArrayList().size()-1;i++){
+            if(p.getExerciseArrayList().get(i).getIntensity() > p.getExerciseArrayList().get(i+1).getIntensity()){
+                sorted = false;
+            }
+        }
+
+        assertTrue(sorted == true);
+
+        System.out.println("Test of array-sorting method" + "\n" +
+                "Numbers before: " + a + ", " + b + ", " + c + ", " + d + "\n" +
+        "Numbers after: " + p.getExerciseArrayList().get(0).getIntensity() + ", " +
+                p.getExerciseArrayList().get(1).getIntensity() + ", " +
+                p.getExerciseArrayList().get(2).getIntensity() + ", " +
+                p.getExerciseArrayList().get(3).getIntensity()
+        );
     }
 
     //Requirement 1a.  Each program keeps an account of the overall intensity (the highest intensity
@@ -124,7 +142,7 @@ public class ProgramTest { //TODO lage flere inputs og teste for flere bugs
 
         exercises.clear();
 
-        //Adding 3 of 4 of the exercises. Expected return FALSE
+        //Adding 3 of the exercises. 1 missing and expected return is FALSE
         exercises.add(se1);
         exercises.add(se1);
         exercises.add(fe1);
