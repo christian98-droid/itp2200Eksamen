@@ -4,6 +4,8 @@ import HomeExerciseProgram.*;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
@@ -72,10 +74,11 @@ public class ProgramTest { //TODO lage flere inputs og teste for flere bugs
         //Using the method getIntensityLevel within the Program-class to obtain the result
         assertTrue(expectedResult == p.getIntensityLevel());
     }
+
     @Test
     public void findTotalDurationTest(){
         int d1 = 5;
-        int d2 = 15;
+        int d2 = 6;
         int d3 = 10;
         int d4 = 10;
 
@@ -100,7 +103,33 @@ public class ProgramTest { //TODO lage flere inputs og teste for flere bugs
         assertTrue(expectedResult == result);
     }
     @Test
-    public void balancedProgramCheck(){
-        //TODO
+    public void balancedProgramCheckTest(){
+        StrengthExercise se1 = new StrengthExercise("Biceps curl", "Curl your bicep using a dumbell", 6, 2, 3, 8, "Dumbell", 15);
+        EnduranceExercise ee1 = new EnduranceExercise("Hill run", "Run up and down a hill", 6, 15, 3, 8, "None");
+        FlexibilityExercise fe1 = new FlexibilityExercise("Hamstring streach", "Streach your hamstring", 6, 5, 3, 1, "None");
+        BalanceExercise be1 = new BalanceExercise("Balance pillow", "Keep your balance on the pillow", 6, 3, 6,4, "Balancing ");
+
+        ArrayList<Exercise> exercises = new ArrayList<>();
+
+        //Adding one of each exercise
+        exercises.add(se1);
+        exercises.add(ee1);
+        exercises.add(fe1);
+        exercises.add(be1);
+
+        Program p = new Program(exercises);
+
+        //Checking if the method returns the expected TRUE
+        assertTrue(p.balancedProgramCheck(exercises));
+
+        exercises.clear();
+
+        //Adding 3 of 4 of the exercises. Expected return FALSE
+        exercises.add(se1);
+        exercises.add(se1);
+        exercises.add(fe1);
+        exercises.add(be1);
+
+        assertFalse(p.balancedProgramCheck(exercises));
     }
 }
