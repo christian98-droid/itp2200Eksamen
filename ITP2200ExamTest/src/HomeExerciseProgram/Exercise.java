@@ -39,6 +39,7 @@ public abstract class Exercise {
     @Override
     public String toString(){
         return "Name of exercise:" + " " + eName + "\n"
+                + "Description::"  +  " " + eDescription + "\n"
                 + "intensity of exercise:"  +  " " + intensity + "\n"
                 + "Duration of exercise:" + " " + duration + "min" + "\n"
                 + "Repetitions:" + " " + repetitions + "\n"
