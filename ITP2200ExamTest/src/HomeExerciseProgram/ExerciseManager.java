@@ -447,11 +447,15 @@ public class ExerciseManager {
 
     // POSSIBLE CRASH IF USER INPUT > 10
     private static int generateAcceptableIntensity(Scanner systemIn) {
-
         System.out.println("Enter acceptable intensity (1-10):");
-        String inter = systemIn.nextLine();
-        int inegerInt = Integer.parseInt(inter);
-        return inegerInt;
+        int userInput = systemIn.nextInt();
+
+        //La til en while loop her for å stoppe bruker fra å legge inn feil tall
+        while (userInput > 10 || (userInput < 1)) {
+            System.out.println("Invalid number, try again");
+            userInput = systemIn.nextInt();
+        }
+        return userInput;
 
     }
 
