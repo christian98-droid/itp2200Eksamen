@@ -74,7 +74,6 @@ public class Program {
         boolean b = false;
         boolean f = false;
         boolean e = false;
-
         boolean balanced = false;
         for(Exercise ex : exercises){
             if(ex instanceof StrengthExercise){s = true;}
@@ -95,43 +94,7 @@ public class Program {
                 + "Is balanced" + " " + balanced +"\n" + "\n" + exerciseArrayList;
 
     }
-
-}
-
-
-//
-
-/*
-package homeExercisesPackage;
-import java.util.ArrayList;
-
-public class Program {
-
-    ArrayList<Exercise> lightExercises = new ArrayList<>();
-    ArrayList<Exercise> mediumExercises = new ArrayList<>();
-    ArrayList<Exercise> hardExercises = new ArrayList<>();
-
-    private String pName;
-    private int duration;
-    private int intensityLevel;
-
-    public Program(String pName, int duration, int intensityLevel) {
-        this.pName = pName;
-        this.duration = duration;
-        this.intensityLevel = intensityLevel;
-    }
-
-    @Override
-    public String toString() {
-
-        String programOut = "Program Name:" + " " + pName + "\n"
-        + "Program duration:" + " " + duration + "min" + "\n"
-        + "Intensity of program: " + " " + intensityLevel + "\n";
-        return programOut;
-    }
 }
 
 
 
-
-*/

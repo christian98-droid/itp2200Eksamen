@@ -211,7 +211,7 @@ public class ExerciseManager {
                                     break;
 
                                 default:
-                                    System.out.println("Intensitivity not valid");
+                                    System.out.println("Intensity not valid");
                         }
 
                     break;
@@ -227,7 +227,6 @@ public class ExerciseManager {
             }
 
         }
-
     }
 
     // TODO : SIMEN TEST // Prevent error when typing in wrong data type. Hvis brukeren taster inn String istedenfor int krasjer det. Men int istedenfor String går.
@@ -370,8 +369,7 @@ public class ExerciseManager {
         return fName;
     }
 
-    private static String generatePersonLName(Scanner systemIn) {
-
+    public static String generatePersonLName(Scanner systemIn) {
         System.out.println("Enter last name:");
         String lName = systemIn.nextLine();
         return lName;
@@ -384,17 +382,21 @@ public class ExerciseManager {
         return preferredExercise;
     }
 
-    // POSSIBLE CRASH IF USER INPUT > 10
-    private static int generateAcceptableIntensity(Scanner systemIn) {
-
+    public static int generateAcceptableIntensity(Scanner systemIn) {
+        //TODO fremdeles mulig for bruker å kræsje programmet ved å taste string
+        int userInput;
         System.out.println("Enter acceptable intensity (1-10):");
-        String inter = systemIn.nextLine();
-        int inegerInt = Integer.parseInt(inter);
-        return inegerInt;
+        userInput = systemIn.nextInt();
 
+        //La til en while loop her for å stoppe bruker fra å legge inn feil tall
+        while (userInput > 10 || (userInput < 1)) {
+            System.out.println("Invalid number, try again");
+            userInput = systemIn.nextInt();
+        }
+        return userInput;
     }
 
-    private static Person generateUser(Scanner systemIn) {
+    public static Person generateUser(Scanner systemIn) {
 
         String fName = generatePersonFName(systemIn);
         String lName = generatePersonLName(systemIn);
