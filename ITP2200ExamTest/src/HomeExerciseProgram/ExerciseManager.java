@@ -45,16 +45,16 @@ public class ExerciseManager {
         FlexibilityExercise fe9 = new FlexibilityExercise("Decline stretch", "Regular decline stretch", 9, 10, 1, 1, "None");
         FlexibilityExercise fe10 = new FlexibilityExercise("Bridge", "Make your body do a bridge", 10, 11, 1, 1, "None");
 
-        BalanceExercise be1 = new BalanceExercise("Balance pillow", "Keep your balance on the pillow", 1, 3, 6,4, "Balancing ");
-        BalanceExercise be2 = new BalanceExercise("Balance squat", "Squat down on one leg, keep your balance", 2, 4, 6, 5,  "None");
-        BalanceExercise be3 = new BalanceExercise("Line walk", "Walk on a line and keep your balance", 3, 4, 3,2, "Line/Rope ");
-        BalanceExercise be4 = new BalanceExercise("One handed push-up", "Push-ups with one hand", 4, 5, 6,4, "None ");
-        BalanceExercise be5 = new BalanceExercise("One legged hold jump", "Hold one leg in the air", 5, 6, 6, 5,  "None");
-        BalanceExercise be6 = new BalanceExercise("Heel-to-toe walk", "Walk from heel to heel.", 6, 7, 3,2, "None ");
-        BalanceExercise be7 = new BalanceExercise("Step-up", "Find an object to step up onto", 7, 8, 6,4, "Stairs/Bench ");
-        BalanceExercise be8 = new BalanceExercise("Sideways walking", "Walk sideways", 8, 9, 6, 5,  "None");
-        BalanceExercise be9 = new BalanceExercise("Simple grapevine", "Avoid dropping your hips as you step. ", 9, 10, 3,2, "None ");
-        BalanceExercise be10 = new BalanceExercise("One foot balance pillow", "Keep your balance on the pillow, one foot", 10, 11, 6,4, "Balancing Pillow ");
+        BalanceExercise be1 = new BalanceExercise("Balance pillow", "Keep your balance on the pillow", 1, 3, 6, 4, "Balancing ");
+        BalanceExercise be2 = new BalanceExercise("Balance squat", "Squat down on one leg, keep your balance", 2, 4, 6, 5, "None");
+        BalanceExercise be3 = new BalanceExercise("Line walk", "Walk on a line and keep your balance", 3, 4, 3, 2, "Line/Rope ");
+        BalanceExercise be4 = new BalanceExercise("One handed push-up", "Push-ups with one hand", 4, 5, 6, 4, "None ");
+        BalanceExercise be5 = new BalanceExercise("One legged hold jump", "Hold one leg in the air", 5, 6, 6, 5, "None");
+        BalanceExercise be6 = new BalanceExercise("Heel-to-toe walk", "Walk from heel to heel.", 6, 7, 3, 2, "None ");
+        BalanceExercise be7 = new BalanceExercise("Step-up", "Find an object to step up onto", 7, 8, 6, 4, "Stairs/Bench ");
+        BalanceExercise be8 = new BalanceExercise("Sideways walking", "Walk sideways", 8, 9, 6, 5, "None");
+        BalanceExercise be9 = new BalanceExercise("Simple grapevine", "Avoid dropping your hips as you step. ", 9, 10, 3, 2, "None ");
+        BalanceExercise be10 = new BalanceExercise("One foot balance pillow", "Keep your balance on the pillow, one foot", 10, 11, 6, 4, "Balancing Pillow ");
 
 
         ArrayList<Exercise> exercises1 = new ArrayList<>();
@@ -141,148 +141,165 @@ public class ExerciseManager {
         String response = "";
         Boolean notDone = true;
         Boolean notDoone = true;
-        Boolean notDooone = true;
-
 
         System.out.println("\n Welcome to Exercise Manager \n");
 
         // Nested switch statements
         while (notDone) {
 
-            // TODO : TEST // generateUser ber brukeren taste inn intLevel, som ikke kan være høyere enn 10, ellers feil lenger ned..
-            Person newPerson = generateUser(userIn);
-
-            System.out.println("Create own or use existing - (O) // (E)" + "\n");
+            System.out.println("START - (S)" + "\n");
             System.out.println("Quit program - (Q)");
 
             response = userIn.nextLine();
 
             switch (response.toUpperCase()) {
 
-                // CASE O. User has chosen to create own program.
-                case "O":
-                    while (notDoone) {
-                        System.out.println("Create strength exercise - (S)");
-                        System.out.println("Create endurance exercise - (E)");
-                        System.out.println("Create flexibility exercise - (F)");
-                        System.out.println("Create balance exercise - (B)");
-                        System.out.println("Print out program - (P)" + "\n");
-                        System.out.println("Quit program - (Q)");
+                case "S":
+                Person newPerson = generateUser(userIn);
 
-                        response = userIn.nextLine();
+                System.out.println("Create own or use existing - (O) // (E)" + "\n");
+                System.out.println("Quit program - (Q)");
 
-                        switch (response.toUpperCase()) {
+                response = userIn.nextLine();
 
-                            case "S":
+                switch (response.toUpperCase()) {
 
-                                StrengthExercise userStrengthExercise = generateStrengthExercise(userIn);
-                                userExercises.add(userStrengthExercise);
-                                break;
+                    // CASE O. User has chosen to create own program.
+                    case "O":
+                        while (notDoone) {
+                            System.out.println("Create strength exercise - (S)");
+                            System.out.println("Create endurance exercise - (E)");
+                            System.out.println("Create flexibility exercise - (F)");
+                            System.out.println("Create balance exercise - (B)");
+                            System.out.println("Print out program - (P)" + "\n");
+                            System.out.println("Quit program - (Q)");
 
-                            case "E":
+                            response = userIn.nextLine();
 
-                                EnduranceExercise userEnduranceExercise = generateEnduranceExercise(userIn);
-                                userExercises.add(userEnduranceExercise);
-                                break;
+                            switch (response.toUpperCase()) {
 
-                            case "F":
+                                case "S":
 
-                                FlexibilityExercise userFlexibilityExercise = generateFlexibilityExercise(userIn);
-                                userExercises.add(userFlexibilityExercise);
-                                break;
-
-
-                            case "B":
-
-                                BalanceExercise userBalanceExercise = generateBalanceExercise(userIn);
-                                userExercises.add(userBalanceExercise);
-                                break;
-
-                            case "P":
-
-                                Program userProgram = new Program(userExercises);
-                                newPerson.setCurrentProgram(userProgram);
-
-                                System.out.println(newPerson.toString());
-
-                                break;
-
-                            case "Q":
-
-                                notDone = false;
-                                notDoone = false;
-
-                                System.out.println("Exercise Manager is quitting");
-                                break;
-
-                            default:
-                                System.out.println("User input is unknown");
-                                break;
-                        }
-
-                    }
-
-                    break;
-            // CASE E. User has chosen existing program.
-                case "E":
-                    // TODO : TEST // hvis intLevel er over 10, blir det feil her. Må løses når brukeren taster det inn i starten.
-                            switch (newPerson.getAcceptableIntensity()){
-                                case 1:
-                                    newPerson.setCurrentProgram(program1);
-                                    System.out.println(newPerson.toString());
-                                    break;
-                                case 2:
-                                    newPerson.setCurrentProgram(program2);
-                                    System.out.println(newPerson.toString());
+                                    StrengthExercise userStrengthExercise = generateStrengthExercise(userIn);
+                                    userExercises.add(userStrengthExercise);
                                     break;
 
-                                case 3:
-                                    newPerson.setCurrentProgram(program3);
-                                    System.out.println(newPerson.toString());
+                                case "E":
+
+                                    EnduranceExercise userEnduranceExercise = generateEnduranceExercise(userIn);
+                                    userExercises.add(userEnduranceExercise);
                                     break;
-                                case 4:
-                                    newPerson.setCurrentProgram(program4);
-                                    System.out.println(newPerson.toString());
+
+                                case "F":
+
+                                    FlexibilityExercise userFlexibilityExercise = generateFlexibilityExercise(userIn);
+                                    userExercises.add(userFlexibilityExercise);
                                     break;
-                                case 5:
-                                    newPerson.setCurrentProgram(program5);
-                                    System.out.println(newPerson.toString());
+
+
+                                case "B":
+
+                                    BalanceExercise userBalanceExercise = generateBalanceExercise(userIn);
+                                    userExercises.add(userBalanceExercise);
                                     break;
-                                case 6:
-                                    newPerson.setCurrentProgram(program6);
+
+                                case "P":
+
+                                    Program userProgram = new Program(userExercises);
+                                    newPerson.setCurrentProgram(userProgram);
+
                                     System.out.println(newPerson.toString());
+
                                     break;
-                                case 7:
-                                    newPerson.setCurrentProgram(program7);
-                                    System.out.println(newPerson.toString());
-                                    break;
-                                case 8:
-                                    newPerson.setCurrentProgram(program8);
-                                    System.out.println(newPerson.toString());
-                                    break;
-                                case 9:
-                                    newPerson.setCurrentProgram(program9);
-                                    System.out.println(newPerson.toString());
-                                    break;
-                                case 10:
-                                    newPerson.setCurrentProgram(program10);
-                                    System.out.println(newPerson.toString());
+
+                                case "Q":
+
+                                    notDone = false;
+                                    notDoone = false;
+
+                                    System.out.println("Exercise Manager is quitting");
                                     break;
 
                                 default:
-                                    System.out.println("Intensitivity not valid");
+                                    System.out.println("User input is unknown");
+                                    break;
+                            }
+
                         }
 
-                    break;
+                        break;
+                    // CASE E. User has chosen existing program.
+                    case "E":
+                        // TODO : TEST // hvis intLevel er over 10, blir det feil her. Må løses når brukeren taster det inn i starten.
+                        switch (newPerson.getAcceptableIntensity()) {
+                            case 1:
+                                newPerson.setCurrentProgram(program1);
+                                System.out.println(newPerson.toString());
+                                break;
+                            case 2:
+                                newPerson.setCurrentProgram(program2);
+                                System.out.println(newPerson.toString());
+                                break;
+
+                            case 3:
+                                newPerson.setCurrentProgram(program3);
+                                System.out.println(newPerson.toString());
+                                break;
+                            case 4:
+                                newPerson.setCurrentProgram(program4);
+                                System.out.println(newPerson.toString());
+                                break;
+                            case 5:
+                                newPerson.setCurrentProgram(program5);
+                                System.out.println(newPerson.toString());
+                                break;
+                            case 6:
+                                newPerson.setCurrentProgram(program6);
+                                System.out.println(newPerson.toString());
+                                break;
+                            case 7:
+                                newPerson.setCurrentProgram(program7);
+                                System.out.println(newPerson.toString());
+                                break;
+                            case 8:
+                                newPerson.setCurrentProgram(program8);
+                                System.out.println(newPerson.toString());
+                                break;
+                            case 9:
+                                newPerson.setCurrentProgram(program9);
+                                System.out.println(newPerson.toString());
+                                break;
+                            case 10:
+                                newPerson.setCurrentProgram(program10);
+                                System.out.println(newPerson.toString());
+                                break;
+
+                            default:
+                                System.out.println("Intensitivity not valid");
+                        }
+
+                        break;
 
                     case "Q":
                         notDone = false;
                         System.out.println("Exercise Manager is quitting");
                         break;
 
+                    default:
+                        System.out.println("User input is unknown");
+                        break;
+                }
+
+                break;
+                case "Q":
+                    notDone = false;
+                    System.out.println("Exercise Manager is quitting");
+                    break;
+
                 default:
                     System.out.println("User input is unknown");
                     break;
+
             }
 
         }
@@ -445,17 +462,18 @@ public class ExerciseManager {
 
     // POSSIBLE CRASH IF USER INPUT > 10
     private static int generateAcceptableIntensity(Scanner systemIn) {
-        System.out.println("Enter acceptable intensity (1-10):");
-        String acceptableIntensity = systemIn.nextLine();
-        int acceptableIntensityInt = Integer.parseInt(acceptableIntensity);
-        //La til en while loop her for å stoppe bruker fra å legge inn feil tall
-        while (acceptableIntensityInt > 10 || (acceptableIntensityInt < 1)) {
-            System.out.println("Invalid number, try again");
-            acceptableIntensity = systemIn.nextLine();
-            acceptableIntensityInt = Integer.parseInt(acceptableIntensity);
+            System.out.println("Enter acceptable intensity (1-10):");
+            String acceptableIntensity = systemIn.nextLine();
+            int acceptableIntensityInt = Integer.parseInt(acceptableIntensity);
+            //La til en while loop her for å stoppe bruker fra å legge inn feil tall
+            while (acceptableIntensityInt > 10 || (acceptableIntensityInt < 1)) {
+                System.out.println("Invalid number, try again");
+                acceptableIntensity = systemIn.nextLine();
+                acceptableIntensityInt = Integer.parseInt(acceptableIntensity);
+            }
+
+            return acceptableIntensityInt;
         }
-        return acceptableIntensityInt;
-    }
 
     private static Person generateUser(Scanner systemIn) {
 
