@@ -136,7 +136,6 @@ public class ExerciseManager {
 
         // Scanner
         ArrayList<Exercise> userExercises = new ArrayList<>();
-        ArrayList<Exercise> newUser = new ArrayList<>();
 
         Scanner userIn = new Scanner(System.in);
         String response = "";
@@ -158,7 +157,6 @@ public class ExerciseManager {
 
             response = userIn.nextLine();
 
-            // TODO : TEST // liten/stor bokstav. toUpperCase so the user user response is not case-sensitive.
             switch (response.toUpperCase()) {
 
                 // CASE O. User has chosen to create own program.
@@ -448,15 +446,15 @@ public class ExerciseManager {
     // POSSIBLE CRASH IF USER INPUT > 10
     private static int generateAcceptableIntensity(Scanner systemIn) {
         System.out.println("Enter acceptable intensity (1-10):");
-        int userInput = systemIn.nextInt();
-
+        String acceptableIntensity = systemIn.nextLine();
+        int acceptableIntensityInt = Integer.parseInt(acceptableIntensity);
         //La til en while loop her for å stoppe bruker fra å legge inn feil tall
-        while (userInput > 10 || (userInput < 1)) {
+        while (acceptableIntensityInt > 10 || (acceptableIntensityInt < 1)) {
             System.out.println("Invalid number, try again");
-            userInput = systemIn.nextInt();
+            acceptableIntensity = systemIn.nextLine();
+            acceptableIntensityInt = Integer.parseInt(acceptableIntensity);
         }
-        return userInput;
-
+        return acceptableIntensityInt;
     }
 
     private static Person generateUser(Scanner systemIn) {
