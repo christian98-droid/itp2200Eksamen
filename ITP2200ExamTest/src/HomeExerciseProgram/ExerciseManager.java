@@ -322,38 +322,66 @@ public class ExerciseManager {
     }
 
     private static int generateIntensity(Scanner systemIn) {
-
         System.out.println("Enter intensity:");
-        String intensity = systemIn.nextLine();
-        int intensityInt = Integer.parseInt(intensity);
-        return intensityInt;
+        try {
+            String intensity = systemIn.nextLine();
+            int intensityInt = Integer.parseInt(intensity);
 
+            while (intensityInt > 10 || (intensityInt < 1)) {
+                System.out.println("Invalid number, try again - pick a number between 1 and 10");
+                intensity = systemIn.nextLine();
+                intensityInt = Integer.parseInt(intensity);
+            }
+            return intensityInt;
+
+        }catch(NumberFormatException e) {
+            System.out.println("Wrong input!");
+            Scanner s = new Scanner(System.in);
+            int intensityInt = generateIntensity(s);
+            return intensityInt;
+        }
     }
 
     private static int generateDuration(Scanner systemIn) {
-
         System.out.println("Enter duration:");
-        String duration = systemIn.nextLine();
-        int durationInt = Integer.parseInt(duration);
-        return durationInt;
-
+        try {
+            String duration = systemIn.nextLine();
+            int durationInt = Integer.parseInt(duration);
+            return durationInt;
+        }catch(NumberFormatException e) {
+            System.out.println("Wrong input!");
+            Scanner s = new Scanner(System.in);
+            int durationInt = generateDuration(s);
+            return durationInt;
+        }
     }
 
     private static int generateRepetitions(Scanner systemIn) {
-
         System.out.println("Enter repetitions:");
-        String repetitions = systemIn.nextLine();
-        int repetitionsInt = Integer.parseInt(repetitions);
-        return repetitionsInt;
+        try {
+            String repetitions = systemIn.nextLine();
+            int repetitionsInt = Integer.parseInt(repetitions);
+            return repetitionsInt;
+        }catch(NumberFormatException e) {
+            System.out.println("Wrong input!");
+            Scanner s = new Scanner(System.in);
+            int repetitionsInt = generateRepetitions(s);
+            return repetitionsInt;
+        }
     }
 
     private static int generateSets(Scanner systemIn) {
-
         System.out.println("Enter sets:");
-        String sets = systemIn.nextLine();
-        int setsInt = Integer.parseInt(sets);
-        return setsInt;
-
+        try {
+            String sets = systemIn.nextLine();
+            int setsInt = Integer.parseInt(sets);
+            return setsInt;
+        }catch(NumberFormatException e) {
+            System.out.println("Wrong input!");
+            Scanner s = new Scanner(System.in);
+            int setsInt = generateSets(s);
+            return setsInt;
+        }
     }
 
     private static String generateEquipment(Scanner systemIn) {
@@ -365,11 +393,17 @@ public class ExerciseManager {
     }
 
     private static int generateWeights(Scanner systemIn) {
-
         System.out.println("Enter weights in kg:");
-        String weights = systemIn.nextLine();
-        int weightsInt = Integer.parseInt(weights);
-        return weightsInt;
+        try{
+            String weights = systemIn.nextLine();
+            int weightsInt = Integer.parseInt(weights);
+            return weightsInt;
+        }catch(NumberFormatException e){
+            System.out.println("Wrong input!");
+            Scanner s = new Scanner(System.in);
+            int weightsInt = generateWeights(s);
+            return weightsInt;
+        }
 
     }
 
@@ -475,6 +509,7 @@ public class ExerciseManager {
                 }
                 return acceptableIntensityInt;
             }catch(NumberFormatException e){
+                System.out.println("Wrong input!");
                 Scanner s = new Scanner(System.in);
                 int acceptableIntensity = generateAcceptableIntensity(s);
                 return acceptableIntensity;

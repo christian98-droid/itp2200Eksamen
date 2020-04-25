@@ -145,7 +145,6 @@ public class ProgramTest { //TODO lage flere inputs og teste for flere bugs
      * "Each program has an overall duration. The duration of an exercise is the twice the sum
      * of the durations of all the exercises it includes (to account for rest)."
      */
-
     @Test
     public void findTotalDurationTest() {
         /**
