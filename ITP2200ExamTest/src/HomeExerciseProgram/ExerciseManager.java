@@ -405,6 +405,7 @@ public class ExerciseManager {
         }
     }
 
+
     private static StrengthExercise generateStrengthExercise(Scanner systemIn) {
 
         String eName = generateExerciseName(systemIn);
@@ -525,6 +526,26 @@ public class ExerciseManager {
 
         return userPerson;
 
+    }
+
+    public static int stringToIntConverter(String userInput){
+        /**
+         * I main:
+         * Scanner scanner = new Scanner(System.in);
+         * String userInput = s.nextLine();
+         * stringToIntConverter(userInput); man passer inn parameter det brukeren taster inn som string
+         * og converter inne i metoden for å takle exception.
+         * Metoden returnerer -1 hvis den trenger nytt input fra bruker.
+         * Se exercisemanagerTest for eksempel
+         *
+         */
+        try{
+            int x = Integer.parseInt(userInput);
+            return x;
+        }catch(NumberFormatException e){
+            System.out.println("Wrong input!");
+            return -1; //ha en if(-1) som starter en ny scanner nextline? mulig løsning.
+        }
     }
 
 }
