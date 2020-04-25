@@ -460,19 +460,25 @@ public class ExerciseManager {
         return preferredExercise;
     }
 
-    // POSSIBLE CRASH IF USER INPUT > 10
     private static int generateAcceptableIntensity(Scanner systemIn) {
             System.out.println("Enter acceptable intensity (1-10):");
-            String acceptableIntensity = systemIn.nextLine();
-            int acceptableIntensityInt = Integer.parseInt(acceptableIntensity);
-            //La til en while loop her for å stoppe bruker fra å legge inn feil tall
-            while (acceptableIntensityInt > 10 || (acceptableIntensityInt < 1)) {
-                System.out.println("Invalid number, try again");
-                acceptableIntensity = systemIn.nextLine();
-                acceptableIntensityInt = Integer.parseInt(acceptableIntensity);
-            }
 
-            return acceptableIntensityInt;
+            //Added exception to handle if user writes string instead of integer
+            try {
+                String acceptableIntensity = systemIn.nextLine();
+                int acceptableIntensityInt = Integer.parseInt(acceptableIntensity);
+
+                while (acceptableIntensityInt > 10 || (acceptableIntensityInt < 1)) {
+                    System.out.println("Invalid number, try again");
+                    acceptableIntensity = systemIn.nextLine();
+                    acceptableIntensityInt = Integer.parseInt(acceptableIntensity);
+                }
+                return acceptableIntensityInt;
+            }catch(NumberFormatException e){
+                Scanner s = new Scanner(System.in);
+                int acceptableIntensity = generateAcceptableIntensity(s);
+                return acceptableIntensity;
+            }
         }
 
     private static Person generateUser(Scanner systemIn) {
