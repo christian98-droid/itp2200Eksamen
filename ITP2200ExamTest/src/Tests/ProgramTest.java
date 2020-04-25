@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class ProgramTest { //TODO lage flere inputs og teste for flere bugs
 
-    /**
+    /** findHighestIntensityTest
      * This method aims to test for requirement 1A:
      * "Each program keeps an account of the overall intensity (the highest intensity
      * among the included exercises)." This tests the method in the Program class which finds the highest intensity
@@ -46,7 +46,7 @@ public class ProgramTest { //TODO lage flere inputs og teste for flere bugs
         assertTrue(expectedResult == p.getIntensityLevel());
     }
 
-    /**
+    /** balancedProgramCheckTest
      * This method aims to test for requirement 1B:
      * "Each program keeps account of whether or not it is balanced.
      * A balanced program has at least one exercise of each type."
@@ -83,7 +83,7 @@ public class ProgramTest { //TODO lage flere inputs og teste for flere bugs
     }
 
 
-    /**
+    /** arraySortedByIntensityTest
      * This method aims to test for requirement 1C:
      * "Each program has the exercises sorted in order of increasing intensity."
      */
@@ -121,11 +121,11 @@ public class ProgramTest { //TODO lage flere inputs og teste for flere bugs
         //which can be found in line 25~
         Program p = new Program(exercises);
 
-        boolean sorted = true;
+        boolean sorted = false;
 
         for (int i = 0; i < p.getExerciseArrayList().size() - 1; i++) {
-            if (p.getExerciseArrayList().get(i).getIntensity() > p.getExerciseArrayList().get(i + 1).getIntensity()) {
-                sorted = false;
+            if (p.getExerciseArrayList().get(i).getIntensity() < p.getExerciseArrayList().get(i + 1).getIntensity()) {
+                sorted = true;
             }
         }
 
@@ -140,7 +140,7 @@ public class ProgramTest { //TODO lage flere inputs og teste for flere bugs
         );
     }
 
-    /**
+    /** findTotalDurationTest
      * This method is for testing for requirement 1D:
      * "Each program has an overall duration. The duration of an exercise is the twice the sum
      * of the durations of all the exercises it includes (to account for rest)."

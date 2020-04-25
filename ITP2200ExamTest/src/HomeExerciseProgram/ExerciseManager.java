@@ -230,7 +230,7 @@ public class ExerciseManager {
                         break;
                     // CASE E. User has chosen existing program.
                     case "E":
-                        // TODO : TEST // hvis intLevel er over 10, blir det feil her. Må løses når brukeren taster det inn i starten.
+                        // TODO : TEST // hvis intLevel er over 10, blir det feil her. Må løses når brukeren taster det inn i starten. (fixed av Johan 25.04 (tror jeg :))
                         switch (newPerson.getAcceptableIntensity()) {
                             case 1:
                                 newPerson.setCurrentProgram(program1);
@@ -306,7 +306,6 @@ public class ExerciseManager {
 
     }
 
-    // TODO : SIMEN TEST // Prevent error when typing in wrong data type. Hvis brukeren taster inn String istedenfor int krasjer det. Men int istedenfor String går.
     private static String generateExerciseName(Scanner systemIn) {
 
         System.out.println("Enter name of exercise:");
@@ -392,7 +391,7 @@ public class ExerciseManager {
 
     }
 
-    private static int generateWeights(Scanner systemIn) {
+    public static int generateWeights(Scanner systemIn) {
         System.out.println("Enter weights in kg:");
         try{
             String weights = systemIn.nextLine();
@@ -404,7 +403,6 @@ public class ExerciseManager {
             int weightsInt = generateWeights(s);
             return weightsInt;
         }
-
     }
 
     private static StrengthExercise generateStrengthExercise(Scanner systemIn) {
