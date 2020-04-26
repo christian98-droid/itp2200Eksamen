@@ -445,7 +445,7 @@ public class ExerciseManager {
 
     }
 
-    private static BalanceExercise generateBalanceExercise() {
+    public static BalanceExercise generateBalanceExercise() {
         String eName;
         String eDescription;
         String equipment;

@@ -108,8 +108,6 @@ public class ProgramTest { //TODO lage flere inputs og teste for flere bugs
         exercises.get(1).setIntensity(4);
         exercises.get(2).setIntensity(10);
         exercises.get(3).setIntensity(7);
-        // TODO fikse at bruker ikke kan kræsje programmet ved å taste inn bokstaver istedenfor tall
-        //TODO fikse at bruker ikke kan putte inn større tall enn 10 eller mindre enn 1
 
         //variables for print output
         int a = exercises.get(0).getIntensity();

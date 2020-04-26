@@ -1,15 +1,23 @@
 package Tests;
 
+import HomeExerciseProgram.BalanceExercise;
+import HomeExerciseProgram.ExerciseManager;
 import org.junit.jupiter.api.Test;
 
 
 import static HomeExerciseProgram.ExerciseManager.parseIntensity;
 import static HomeExerciseProgram.ExerciseManager.stringToIntConverter;
+import static HomeExerciseProgram.ExerciseManager.generateBalanceExercise;
+
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class ExerciseManagerTest {
     @Test
     public void generateUserTest() {
+    }
+
+    @Test
+    public void generateBalanceExerciseTest(){
     }
 
     @Test
