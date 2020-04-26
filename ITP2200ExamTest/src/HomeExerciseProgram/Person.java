@@ -41,7 +41,6 @@ public class Person {
     public Program getCurrentProgram(){return currentProgram;}
 
 
-
     @Override
     public String toString(){
         String personalPreference = "Name:" + " " +fName + " " + lName + "\n" + "\n"

@@ -67,9 +67,6 @@ public class ExerciseManager {
         ArrayList<Exercise> exercises10 = new ArrayList<>();
 
 
-        ArrayList<Program> programs = new ArrayList<>();
-
-
         exercises1.add(se1);
         exercises1.add(ee1);
         exercises1.add(fe1);
@@ -120,6 +117,7 @@ public class ExerciseManager {
         exercises10.add(fe10);
         exercises10.add(be10);
 
+
         Program program1 = new Program(exercises1);
         Program program2 = new Program(exercises2);
         Program program3 = new Program(exercises3);
@@ -131,6 +129,18 @@ public class ExerciseManager {
         Program program9 = new Program(exercises9);
         Program program10 = new Program(exercises10);
 
+        ArrayList<Program> programs = new ArrayList<>();
+
+        programs.add(program1);
+        programs.add(program2);
+        programs.add(program3);
+        programs.add(program4);
+        programs.add(program5);
+        programs.add(program6);
+        programs.add(program7);
+        programs.add(program8);
+        programs.add(program9);
+        programs.add(program10);
 
         // Scanner
         ArrayList<Exercise> userExercises = new ArrayList<>();
@@ -155,15 +165,15 @@ public class ExerciseManager {
                 case "S":
                 Person newPerson = generateUser();
 
-                System.out.println("Create own or use existing - (O) // (E)" + "\n");
+                System.out.println("Build own or use recommended existing program - (B) // (R)" + "\n");
                 System.out.println("Quit program - (Q)");
 
                 response = userIn.nextLine();
 
                 switch (response.toUpperCase()) {
 
-                    // CASE O. User has chosen to create own program.
-                    case "O":
+                    // CASE B. User has chosen to build own program.
+                    case "B":
                         while (notDoone) {
                             System.out.println("Create strength exercise - (S)");
                             System.out.println("Create endurance exercise - (E)");
@@ -226,54 +236,9 @@ public class ExerciseManager {
                         }
 
                         break;
-                    // CASE E. User has chosen existing program.
-                    case "E":
-                        switch (newPerson.getAcceptableIntensity()) {
-                            case 1:
-                                newPerson.setCurrentProgram(program1);
-                                System.out.println(newPerson.toString());
-                                break;
-                            case 2:
-                                newPerson.setCurrentProgram(program2);
-                                System.out.println(newPerson.toString());
-                                break;
-
-                            case 3:
-                                newPerson.setCurrentProgram(program3);
-                                System.out.println(newPerson.toString());
-                                break;
-                            case 4:
-                                newPerson.setCurrentProgram(program4);
-                                System.out.println(newPerson.toString());
-                                break;
-                            case 5:
-                                newPerson.setCurrentProgram(program5);
-                                System.out.println(newPerson.toString());
-                                break;
-                            case 6:
-                                newPerson.setCurrentProgram(program6);
-                                System.out.println(newPerson.toString());
-                                break;
-                            case 7:
-                                newPerson.setCurrentProgram(program7);
-                                System.out.println(newPerson.toString());
-                                break;
-                            case 8:
-                                newPerson.setCurrentProgram(program8);
-                                System.out.println(newPerson.toString());
-                                break;
-                            case 9:
-                                newPerson.setCurrentProgram(program9);
-                                System.out.println(newPerson.toString());
-                                break;
-                            case 10:
-                                newPerson.setCurrentProgram(program10);
-                                System.out.println(newPerson.toString());
-                                break;
-
-                            default:
-                                System.out.println("Intensitivity not valid");
-                        }
+                    // CASE R. User has chosen recommended existing program.
+                    case "R":
+                        recommendAppropriateProgram(newPerson, programs);
 
                         break;
 
@@ -591,6 +556,57 @@ public class ExerciseManager {
         return intensity;
     }
 
-    //TODO a. Methods for deciding if a Program is appropriate for a given Person?
+    public static void recommendAppropriateProgram(Person p, ArrayList<Program> programs){
+
+        switch (p.getAcceptableIntensity()) {
+
+            case 1:
+                p.setCurrentProgram(programs.get(1));
+                System.out.println(p.toString());
+                break;
+            case 2:
+                p.setCurrentProgram(programs.get(2));
+                System.out.println(p.toString());
+                break;
+
+            case 3:
+                p.setCurrentProgram(programs.get(3));
+                System.out.println(p.toString());
+                break;
+            case 4:
+                p.setCurrentProgram(programs.get(4));
+                System.out.println(p.toString());
+                break;
+            case 5:
+                p.setCurrentProgram(programs.get(5));
+                System.out.println(p.toString());
+                break;
+            case 6:
+                p.setCurrentProgram(programs.get(6));
+                System.out.println(p.toString());
+                break;
+            case 7:
+                p.setCurrentProgram(programs.get(7));
+                System.out.println(p.toString());
+                break;
+            case 8:
+                p.setCurrentProgram(programs.get(8));
+                System.out.println(p.toString());
+                break;
+            case 9:
+                p.setCurrentProgram(programs.get(9));
+                System.out.println(p.toString());
+                break;
+            case 10:
+                p.setCurrentProgram(programs.get(10));
+                System.out.println(p.toString());
+                break;
+
+            default:
+                System.out.println("Intensitivity not valid");
+        }
+
+    }
 
 }
+
