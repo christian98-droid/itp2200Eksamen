@@ -2,7 +2,7 @@ package HomeExerciseProgram;
 
 public class BalanceExercise extends Exercise {
 
-    private String equipment;
+    public String equipment;
 
     //Constructor
     public BalanceExercise(String eName, String eDescription, int intensity, int duration, int repetitions, int sets, String equipment) {
