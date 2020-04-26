@@ -1,8 +1,6 @@
 package HomeExerciseProgram;
-import javax.swing.*;
 import java.util.Scanner;
 import java.util.ArrayList;
-import java.util.Locale;
 
 
 public class ExerciseManager {
@@ -155,7 +153,7 @@ public class ExerciseManager {
             switch (response.toUpperCase()) {
 
                 case "S":
-                Person newPerson = generateUser(userIn);
+                Person newPerson = generateUser();
 
                 System.out.println("Create own or use existing - (O) // (E)" + "\n");
                 System.out.println("Quit program - (Q)");
@@ -180,26 +178,26 @@ public class ExerciseManager {
 
                                 case "S":
 
-                                    StrengthExercise userStrengthExercise = generateStrengthExercise(userIn);
+                                    StrengthExercise userStrengthExercise = generateStrengthExercise();
                                     userExercises.add(userStrengthExercise);
                                     break;
 
                                 case "E":
 
-                                    EnduranceExercise userEnduranceExercise = generateEnduranceExercise(userIn);
+                                    EnduranceExercise userEnduranceExercise = generateEnduranceExercise();
                                     userExercises.add(userEnduranceExercise);
                                     break;
 
                                 case "F":
 
-                                    FlexibilityExercise userFlexibilityExercise = generateFlexibilityExercise(userIn);
+                                    FlexibilityExercise userFlexibilityExercise = generateFlexibilityExercise();
                                     userExercises.add(userFlexibilityExercise);
                                     break;
 
 
                                 case "B":
 
-                                    BalanceExercise userBalanceExercise = generateBalanceExercise(userIn);
+                                    BalanceExercise userBalanceExercise = generateBalanceExercise();
                                     userExercises.add(userBalanceExercise);
                                     break;
 
@@ -230,7 +228,6 @@ public class ExerciseManager {
                         break;
                     // CASE E. User has chosen existing program.
                     case "E":
-                        // TODO : TEST // hvis intLevel er over 10, blir det feil her. Må løses når brukeren taster det inn i starten. (fixed av Johan 25.04 (tror jeg :))
                         switch (newPerson.getAcceptableIntensity()) {
                             case 1:
                                 newPerson.setCurrentProgram(program1);
@@ -306,116 +303,64 @@ public class ExerciseManager {
 
     }
 
-    private static String generateExerciseName(Scanner systemIn) {
+    public static StrengthExercise generateStrengthExercise() {
+        String eName;
+        String eDescription;
+        String equipment;
+        int intensityInt;
+        int durationInt;
+        int repetitionsInt;
+        int setsInt;
+        int weightsInt;
+
+        Scanner scanner = new Scanner(System.in);
 
         System.out.println("Enter name of exercise:");
-        String eNavn = systemIn.nextLine();
-        return eNavn;
-    }
-
-    private static String generateDescription(Scanner systemIn) {
+        eName = scanner.nextLine();
 
         System.out.println("Describe exercise:");
-        String eDescription = systemIn.nextLine();
-        return eDescription;
-    }
+        eDescription = scanner.nextLine();
 
-    private static int generateIntensity(Scanner systemIn) {
-        System.out.println("Enter intensity:");
-        try {
-            String intensity = systemIn.nextLine();
-            int intensityInt = Integer.parseInt(intensity);
+        System.out.println("Enter equipment");
+        equipment = scanner.nextLine();
 
-            while (intensityInt > 10 || (intensityInt < 1)) {
-                System.out.println("Invalid number, try again - pick a number between 1 and 10");
-                intensity = systemIn.nextLine();
-                intensityInt = Integer.parseInt(intensity);
-            }
-            return intensityInt;
-
-        }catch(NumberFormatException e) {
-            System.out.println("Wrong input!");
-            Scanner s = new Scanner(System.in);
-            int intensityInt = generateIntensity(s);
-            return intensityInt;
-        }
-    }
-
-    private static int generateDuration(Scanner systemIn) {
-        System.out.println("Enter duration:");
-        try {
-            String duration = systemIn.nextLine();
-            int durationInt = Integer.parseInt(duration);
-            return durationInt;
-        }catch(NumberFormatException e) {
-            System.out.println("Wrong input!");
-            Scanner s = new Scanner(System.in);
-            int durationInt = generateDuration(s);
-            return durationInt;
-        }
-    }
-
-    private static int generateRepetitions(Scanner systemIn) {
-        System.out.println("Enter repetitions:");
-        try {
-            String repetitions = systemIn.nextLine();
-            int repetitionsInt = Integer.parseInt(repetitions);
-            return repetitionsInt;
-        }catch(NumberFormatException e) {
-            System.out.println("Wrong input!");
-            Scanner s = new Scanner(System.in);
-            int repetitionsInt = generateRepetitions(s);
-            return repetitionsInt;
-        }
-    }
-
-    private static int generateSets(Scanner systemIn) {
-        System.out.println("Enter sets:");
-        try {
-            String sets = systemIn.nextLine();
-            int setsInt = Integer.parseInt(sets);
-            return setsInt;
-        }catch(NumberFormatException e) {
-            System.out.println("Wrong input!");
-            Scanner s = new Scanner(System.in);
-            int setsInt = generateSets(s);
-            return setsInt;
-        }
-    }
-
-    private static String generateEquipment(Scanner systemIn) {
-
-        System.out.println("Enter equipment:");
-        String equipment = systemIn.nextLine();
-        return equipment;
-
-    }
-
-    public static int generateWeights(Scanner systemIn) {
-        System.out.println("Enter weights in kg:");
-        try{
-            String weights = systemIn.nextLine();
-            int weightsInt = Integer.parseInt(weights);
-            return weightsInt;
-        }catch(NumberFormatException e){
-            System.out.println("Wrong input!");
-            Scanner s = new Scanner(System.in);
-            int weightsInt = generateWeights(s);
-            return weightsInt;
-        }
-    }
+        // Intensity
+        do { //This do-while loop executes once, and continue executing like like a loop so long as the
+            // statement in the while-loop is = true
+            System.out.println("Enter intensity (1-10):");
+            String intensityInput = scanner.nextLine();
+            intensityInt = parseIntensity(intensityInput); //User input gets passed through
+            if(intensityInt == -1){System.out.println("Wrong input! Pick a number between 1-10");} //Lets the user know its the wrong value
+        }while(intensityInt == -1); //So long as the user continue passing invalid data, the loop will go on
 
 
-    private static StrengthExercise generateStrengthExercise(Scanner systemIn) {
+        // Duration
+        do {
+            System.out.println("Enter duration of the exercise (minutes):");
+            String durationInput = scanner.nextLine();
+            durationInt = stringToIntConverter(durationInput);
+        }while(durationInt == -1);
 
-        String eName = generateExerciseName(systemIn);
-        String eDescription = generateDescription(systemIn);
-        int intensityInt = generateIntensity(systemIn);
-        int durationInt = generateDuration(systemIn);
-        int repetitionsInt = generateRepetitions(systemIn);
-        int setsInt = generateSets(systemIn);
-        String equipment = generateEquipment(systemIn);
-        int weightsInt = generateWeights(systemIn);
+        // Repetitions
+        do{
+            System.out.println("Enter amount of repetitions per set:");
+            String userInput = scanner.nextLine();
+            repetitionsInt = stringToIntConverter(userInput);
+        }while(repetitionsInt == -1);
+
+        // Sets
+        do{
+            System.out.println("Enter amount of sets:");
+            String userInput = scanner.nextLine();
+            setsInt = stringToIntConverter(userInput);
+        }while(setsInt == -1);
+
+        // Weights
+        do {
+            System.out.println("Enter number of kg to add to exercise:");
+            String userInput = scanner.nextLine();
+            weightsInt = stringToIntConverter(userInput);
+        }while(weightsInt == -1);
 
         StrengthExercise userStrengthExercise = new StrengthExercise(eName, eDescription, intensityInt, durationInt, repetitionsInt, setsInt, equipment, weightsInt);
 
@@ -423,15 +368,55 @@ public class ExerciseManager {
 
     }
 
-    private static EnduranceExercise generateEnduranceExercise(Scanner systemIn) {
+    private static EnduranceExercise generateEnduranceExercise() {
+        String eName;
+        String eDescription;
+        String equipment;
+        int intensityInt;
+        int durationInt;
+        int repetitionsInt;
+        int setsInt;
 
-        String eName = generateExerciseName(systemIn);
-        String eDescription = generateDescription(systemIn);
-        int intensityInt = generateIntensity(systemIn);
-        int durationInt = generateDuration(systemIn);
-        int repetitionsInt = generateRepetitions(systemIn);
-        int setsInt = generateSets(systemIn);
-        String equipment = generateEquipment(systemIn);
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Enter name of exercise:");
+        eName = scanner.nextLine();
+
+        System.out.println("Describe exercise:");
+        eDescription = scanner.nextLine();
+
+        System.out.println("Enter equipment");
+        equipment = scanner.nextLine();
+
+        // Intensity
+        do {
+            System.out.println("Enter intensity (1-10):");
+            String intensityInput = scanner.nextLine();
+            intensityInt = parseIntensity(intensityInput);
+            if(intensityInt == -1){System.out.println("Wrong input! Pick a number between 1-10");}
+        }while(intensityInt == -1);
+
+
+        // Duration
+        do {
+            System.out.println("Enter duration of the exercise (minutes):");
+            String durationInput = scanner.nextLine();
+            durationInt = stringToIntConverter(durationInput);
+        }while(durationInt == -1);
+
+        // Repetitions
+        do{
+            System.out.println("Enter amount of repetitions per set:");
+            String userInput = scanner.nextLine();
+            repetitionsInt = stringToIntConverter(userInput);
+        }while(repetitionsInt == -1);
+
+        // Sets
+        do{
+            System.out.println("Enter amount of sets:");
+            String userInput = scanner.nextLine();
+            setsInt = stringToIntConverter(userInput);
+        }while(setsInt == -1);
 
         EnduranceExercise userEnduranceExercise = new EnduranceExercise(eName, eDescription, intensityInt, durationInt, repetitionsInt, setsInt, equipment);
 
@@ -439,15 +424,55 @@ public class ExerciseManager {
 
     }
 
-    private static FlexibilityExercise generateFlexibilityExercise(Scanner systemIn) {
+    private static FlexibilityExercise generateFlexibilityExercise() {
+        String eName;
+        String eDescription;
+        String equipment;
+        int intensityInt;
+        int durationInt;
+        int repetitionsInt;
+        int setsInt;
 
-        String eName = generateExerciseName(systemIn);
-        String eDescription = generateDescription(systemIn);
-        int intensityInt = generateIntensity(systemIn);
-        int durationInt = generateDuration(systemIn);
-        int repetitionsInt = generateRepetitions(systemIn);
-        int setsInt = generateSets(systemIn);
-        String equipment = generateEquipment(systemIn);
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Enter name of exercise:");
+        eName = scanner.nextLine();
+
+        System.out.println("Describe exercise:");
+        eDescription = scanner.nextLine();
+
+        System.out.println("Enter equipment");
+        equipment = scanner.nextLine();
+
+        // Intensity
+        do {
+            System.out.println("Enter intensity (1-10):");
+            String intensityInput = scanner.nextLine();
+            intensityInt = parseIntensity(intensityInput);
+            if(intensityInt == -1){System.out.println("Wrong input! Pick a number between 1-10");}
+        }while(intensityInt == -1);
+
+
+        // Duration
+        do {
+            System.out.println("Enter duration of the exercise (minutes):");
+            String durationInput = scanner.nextLine();
+            durationInt = stringToIntConverter(durationInput);
+        }while(durationInt == -1);
+
+        // Repetitions
+        do{
+            System.out.println("Enter amount of repetitions per set:");
+            String userInput = scanner.nextLine();
+            repetitionsInt = stringToIntConverter(userInput);
+        }while(repetitionsInt == -1);
+
+        // Sets
+        do{
+            System.out.println("Enter amount of sets:");
+            String userInput = scanner.nextLine();
+            setsInt = stringToIntConverter(userInput);
+        }while(setsInt == -1);
 
         FlexibilityExercise userFlexibilityExercise = new FlexibilityExercise(eName, eDescription, intensityInt, durationInt, repetitionsInt, setsInt, equipment);
 
@@ -455,15 +480,55 @@ public class ExerciseManager {
 
     }
 
-    private static BalanceExercise generateBalanceExercise(Scanner systemIn) {
+    private static BalanceExercise generateBalanceExercise() {
+        String eName;
+        String eDescription;
+        String equipment;
+        int intensityInt;
+        int durationInt;
+        int repetitionsInt;
+        int setsInt;
 
-        String eName = generateExerciseName(systemIn);
-        String eDescription = generateDescription(systemIn);
-        int intensityInt = generateIntensity(systemIn);
-        int durationInt = generateDuration(systemIn);
-        int repetitionsInt = generateRepetitions(systemIn);
-        int setsInt = generateSets(systemIn);
-        String equipment = generateEquipment(systemIn);
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Enter name of exercise:");
+        eName = scanner.nextLine();
+
+        System.out.println("Describe exercise:");
+        eDescription = scanner.nextLine();
+
+        System.out.println("Enter equipment");
+        equipment = scanner.nextLine();
+
+        // Intensity
+        do {
+            System.out.println("Enter intensity (1-10):");
+            String intensityInput = scanner.nextLine();
+            intensityInt = parseIntensity(intensityInput);
+            if(intensityInt == -1){System.out.println("Wrong input! Pick a number between 1-10");}
+        }while(intensityInt == -1);
+
+
+        // Duration
+        do {
+            System.out.println("Enter duration of the exercise (minutes):");
+            String durationInput = scanner.nextLine();
+            durationInt = stringToIntConverter(durationInput);
+        }while(durationInt == -1);
+
+        // Repetitions
+        do{
+            System.out.println("Enter amount of repetitions per set:");
+            String userInput = scanner.nextLine();
+            repetitionsInt = stringToIntConverter(userInput);
+        }while(repetitionsInt == -1);
+
+        // Sets
+        do{
+            System.out.println("Enter amount of sets:");
+            String userInput = scanner.nextLine();
+            setsInt = stringToIntConverter(userInput);
+        }while(setsInt == -1);
 
         BalanceExercise userBalanceExercise = new BalanceExercise(eName, eDescription, intensityInt, durationInt, repetitionsInt, setsInt, equipment);
 
@@ -471,56 +536,29 @@ public class ExerciseManager {
 
     }
 
-    // Person
-    private static String generatePersonFName(Scanner systemIn) {
+    private static Person generateUser() {
+        String fName;
+        String lName;
+        String preferredExercise;
+        int acceptableIntensity;
+
+        Scanner scanner = new Scanner(System.in);
 
         System.out.println("Enter first name:");
-        String fName = systemIn.nextLine();
-        return fName;
-    }
-
-    private static String generatePersonLName(Scanner systemIn) {
+        fName = scanner.nextLine();
 
         System.out.println("Enter last name:");
-        String lName = systemIn.nextLine();
-        return lName;
-    }
-
-    private static String generatePreferredExercise(Scanner systemIn) {
+        lName = scanner.nextLine();
 
         System.out.println("Enter preferred exercise:");
-        String preferredExercise = systemIn.nextLine();
-        return preferredExercise;
-    }
+        preferredExercise = scanner.nextLine();
 
-    private static int generateAcceptableIntensity(Scanner systemIn) {
+        do {
             System.out.println("Enter acceptable intensity (1-10):");
-
-            //Added exception to handle if user writes string instead of integer
-            try {
-                String acceptableIntensity = systemIn.nextLine();
-                int acceptableIntensityInt = Integer.parseInt(acceptableIntensity);
-
-                while (acceptableIntensityInt > 10 || (acceptableIntensityInt < 1)) {
-                    System.out.println("Invalid number, try again");
-                    acceptableIntensity = systemIn.nextLine();
-                    acceptableIntensityInt = Integer.parseInt(acceptableIntensity);
-                }
-                return acceptableIntensityInt;
-            }catch(NumberFormatException e){
-                System.out.println("Wrong input!");
-                Scanner s = new Scanner(System.in);
-                int acceptableIntensity = generateAcceptableIntensity(s);
-                return acceptableIntensity;
-            }
-        }
-
-    private static Person generateUser(Scanner systemIn) {
-
-        String fName = generatePersonFName(systemIn);
-        String lName = generatePersonLName(systemIn);
-        String preferredExercise = generatePreferredExercise(systemIn);
-        int acceptableIntensity = generateAcceptableIntensity(systemIn);
+            String intensityInput = scanner.nextLine();
+            acceptableIntensity = parseIntensity(intensityInput);
+            if(acceptableIntensity == -1){System.out.println("Wrong input! Pick a number between 1-10");}
+        }while(acceptableIntensity == -1);
 
         Person userPerson = new Person(fName, lName, preferredExercise, acceptableIntensity);
 
@@ -533,19 +571,26 @@ public class ExerciseManager {
          * I main:
          * Scanner scanner = new Scanner(System.in);
          * String userInput = s.nextLine();
-         * stringToIntConverter(userInput); man passer inn parameter det brukeren taster inn som string
-         * og converter inne i metoden for å takle exception.
-         * Metoden returnerer -1 hvis den trenger nytt input fra bruker.
-         * Se exercisemanagerTest for eksempel
-         *
+         * stringToIntConverter(userInput); pass inn string parameter to convert to integer.
+         * It will convert within this method to handle NumberFormatException
+         * Returns integer value, or -1 if invalid data gets passed.
          */
         try{
             int x = Integer.parseInt(userInput);
             return x;
         }catch(NumberFormatException e){
             System.out.println("Wrong input!");
-            return -1; //ha en if(-1) som starter en ny scanner nextline? mulig løsning.
+            return -1;
         }
     }
+
+    public static int parseIntensity(String userInput) {
+        int intensity;
+        intensity = stringToIntConverter(userInput);
+        if(intensity < 1 || intensity > 10){intensity = -1;}
+        return intensity;
+    }
+
+    //TODO a. Methods for deciding if a Program is appropriate for a given Person?
 
 }
