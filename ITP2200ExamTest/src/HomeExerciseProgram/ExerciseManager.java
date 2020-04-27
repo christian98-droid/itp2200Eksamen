@@ -7,8 +7,6 @@ public class ExerciseManager {
 
     public static void main(String[] args) {
 
-        // Create Person, Program TEST
-
         // 40 Exercises of different intensity and type.
         StrengthExercise se1 = new StrengthExercise("Knees down push-ups", "Push-ups while knees on the ground", 1, 3, 10, 3, "None", 0);
         StrengthExercise se2 = new StrengthExercise("Walking lunges", "Take one step, then get on one knee", 2, 4, 10, 3, "None/dumbbell", 0);
