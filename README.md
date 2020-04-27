@@ -15,8 +15,8 @@ Select Test Kind: Package and locate the Tests folder found on "itp2200Eksamen/I
 On the Code Coverage section, select the package HomeExerciseProgram.
 Also make sure to select "itp2200Eksamen" on the Use classpath of module in the Configuration section.
 
-The project readily compiled can be found in the "itp2200Eksamen/ITP2200ExamTest/src/out/production/itp2200Eksamen" folder.
-To compile and run, first make sure you have a JDK installed. Use the cd command to change your working directory 
+The project readily compiled can be found in the "itp2200Eksamen/ITP2200ExamTest/out/production/itp2200Eksamen" folder.
+To run the application via cmd(windows), first make sure you have a JDK installed. Use the cd command to change your working directory 
 to the folder provided above. Set the path to the JDK with set command, example: "set path=%path%;C:\Program Files\Java\jdk-13.0.2\bin"
 Then type java HomeExerciseProgram.ExerciseManager to start the application.
 
