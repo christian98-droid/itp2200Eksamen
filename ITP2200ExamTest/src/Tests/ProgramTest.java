@@ -154,10 +154,10 @@ public class ProgramTest { //TODO lage flere inputs og teste for flere bugs
         /**
          * Use these setters for test-input
          */
-        exercises.get(0).setIntensity(9);
-        exercises.get(1).setIntensity(4);
+        exercises.get(0).setIntensity(8);
+        exercises.get(1).setIntensity(2);
         exercises.get(2).setIntensity(10);
-        exercises.get(3).setIntensity(7);
+        exercises.get(3).setIntensity(5);
 
         //Passing the array to the Program-class will automatically sort it through the Overridden Comparator-method
         //which can be found in line 25~
@@ -165,6 +165,8 @@ public class ProgramTest { //TODO lage flere inputs og teste for flere bugs
 
         boolean sorted = true;
 
+        //Changing the value of the second index spot from 5 t0 10 after the array has ben sorted
+        // to check if it returns false, as expected
         p.getExerciseArrayList().get(1).setIntensity(10);
 
         for (int i = 0; i < p.getExerciseArrayList().size() - 1; i++) {
