@@ -54,7 +54,6 @@ public class ExerciseManager {
         BalanceExercise be9 = new BalanceExercise("Simple grapevine", "Avoid dropping your hips as you step. ", 9, 10, 3, 2, "None ");
         BalanceExercise be10 = new BalanceExercise("One foot balance pillow", "Keep your balance on the pillow, one foot", 10, 11, 6, 4, "Balancing Pillow ");
 
-
         ArrayList<Exercise> exercises1 = new ArrayList<>();
         ArrayList<Exercise> exercises2 = new ArrayList<>();
         ArrayList<Exercise> exercises3 = new ArrayList<>();
@@ -561,45 +560,86 @@ public class ExerciseManager {
         switch (p.getAcceptableIntensity()) {
 
             case 1:
-                p.setCurrentProgram(programs.get(1));
-                System.out.println(p.toString());
+                for(Program program : programs){
+                    if(program.getIntensityLevel() == 1){
+                        p.setCurrentProgram(program);
+                        System.out.println(p.toString());
+                    }
+                }
                 break;
+
             case 2:
-                p.setCurrentProgram(programs.get(2));
-                System.out.println(p.toString());
+                for(Program program : programs){
+                    if(program.getIntensityLevel() == 2){
+                        p.setCurrentProgram(program);
+                        System.out.println(p.toString());
+                    }
+                }
                 break;
 
             case 3:
-                p.setCurrentProgram(programs.get(3));
-                System.out.println(p.toString());
+                for(Program program : programs){
+                    if(program.getIntensityLevel() == 3){
+                        p.setCurrentProgram(program);
+                        System.out.println(p.toString());
+                    }
+                }
                 break;
             case 4:
-                p.setCurrentProgram(programs.get(4));
-                System.out.println(p.toString());
+                for(Program program : programs){
+                    if(program.getIntensityLevel() == 4){
+                        p.setCurrentProgram(program);
+                        System.out.println(p.toString());
+                    }
+                }
                 break;
             case 5:
-                p.setCurrentProgram(programs.get(5));
-                System.out.println(p.toString());
+                for(Program program : programs){
+                    if(program.getIntensityLevel() == 5){
+                        p.setCurrentProgram(program);
+                        System.out.println(p.toString());
+                    }
+                }
                 break;
             case 6:
-                p.setCurrentProgram(programs.get(6));
-                System.out.println(p.toString());
+                for(Program program : programs){
+                    if(program.getIntensityLevel() == 6){
+                        p.setCurrentProgram(program);
+                        System.out.println(p.toString());
+                    }
+                }
                 break;
             case 7:
-                p.setCurrentProgram(programs.get(7));
-                System.out.println(p.toString());
+                for(Program program : programs){
+                    if(program.getIntensityLevel() == 7){
+                        p.setCurrentProgram(program);
+                        System.out.println(p.toString());
+                    }
+                }
                 break;
             case 8:
-                p.setCurrentProgram(programs.get(8));
-                System.out.println(p.toString());
+                for(Program program : programs){
+                    if(program.getIntensityLevel() == 8){
+                        p.setCurrentProgram(program);
+                        System.out.println(p.toString());
+                    }
+                }
                 break;
             case 9:
-                p.setCurrentProgram(programs.get(9));
-                System.out.println(p.toString());
+                for(Program program : programs){
+                    if(program.getIntensityLevel() == 9){
+                        p.setCurrentProgram(program);
+                        System.out.println(p.toString());
+                    }
+                }
                 break;
             case 10:
-                p.setCurrentProgram(programs.get(10));
-                System.out.println(p.toString());
+                for(Program program : programs){
+                    if(program.getIntensityLevel() == 10){
+                        p.setCurrentProgram(program);
+                        System.out.println(p.toString());
+                    }
+                }
                 break;
 
             default:
