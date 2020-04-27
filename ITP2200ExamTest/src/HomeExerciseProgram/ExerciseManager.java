@@ -333,7 +333,7 @@ public class ExerciseManager {
 
     }
 
-    private static EnduranceExercise generateEnduranceExercise() {
+    public static EnduranceExercise generateEnduranceExercise() {
         String eName;
         String eDescription;
         String equipment;
@@ -389,7 +389,7 @@ public class ExerciseManager {
 
     }
 
-    private static FlexibilityExercise generateFlexibilityExercise() {
+    public static FlexibilityExercise generateFlexibilityExercise() {
         String eName;
         String eDescription;
         String equipment;
@@ -501,7 +501,7 @@ public class ExerciseManager {
 
     }
 
-    private static Person generateUser() {
+    public static Person generateUser() {
         String fName;
         String lName;
         String preferredExercise;

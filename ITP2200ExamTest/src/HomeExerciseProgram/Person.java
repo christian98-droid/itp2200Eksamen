@@ -36,6 +36,8 @@ public class Person {
     public void setCurrentProgram(Program currentProgram){ this.currentProgram = currentProgram;}
 
     // Getter
+    public String getfName() {return fName;}
+    public String getlName() {return lName;}
     public String getPreferredExercise(){return preferredExercise;}
     public int getAcceptableIntensity(){return acceptableIntensity;}
     public Program getCurrentProgram(){return currentProgram;}

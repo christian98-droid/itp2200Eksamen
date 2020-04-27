@@ -50,9 +50,29 @@ public class ProgramTest { //TODO lage flere inputs og teste for flere bugs
      * This method aims to test for requirement 1B:
      * "Each program keeps account of whether or not it is balanced.
      * A balanced program has at least one exercise of each type."
+     * The first test, balancedProgramCheckTestTrue, will check if the Program will be considered balanced
+     * The second test, balancedProgramCheckTestFalse, will check if the Program will be considered not balanced
      */
     @Test
-    public void balancedProgramCheckTest() {
+    public void balancedProgramCheckTestFalse() {
+        StrengthExercise se1 = new StrengthExercise("Biceps curl", "Curl your bicep using a dumbell", 6, 2, 3, 8, "Dumbell", 15);
+        FlexibilityExercise fe1 = new FlexibilityExercise("Hamstring streach", "Streach your hamstring", 6, 5, 3, 1, "None");
+        BalanceExercise be1 = new BalanceExercise("Balance pillow", "Keep your balance on the pillow", 6, 3, 6, 4, "Balancing ");
+
+        ArrayList<Exercise> exercises = new ArrayList<>();
+
+        //Adding 3 of the 4 needed exercises to be considered balanced. 1 missing and expected return is FALSE
+        exercises.add(se1);
+        exercises.add(fe1);
+        exercises.add(be1);
+
+        Program p = new Program(exercises);
+
+        assertFalse(p.balancedProgramCheck(exercises));
+    }
+
+    @Test
+    public void balancedProgramCheckTestTrue() {
         StrengthExercise se1 = new StrengthExercise("Biceps curl", "Curl your bicep using a dumbell", 6, 2, 3, 8, "Dumbell", 15);
         EnduranceExercise ee1 = new EnduranceExercise("Hill run", "Run up and down a hill", 6, 15, 3, 8, "None");
         FlexibilityExercise fe1 = new FlexibilityExercise("Hamstring streach", "Streach your hamstring", 6, 5, 3, 1, "None");
@@ -70,16 +90,6 @@ public class ProgramTest { //TODO lage flere inputs og teste for flere bugs
 
         //Checking if the method returns the expected TRUE
         assertTrue(p.balancedProgramCheck(exercises));
-
-        exercises.clear();
-
-        //Adding 3 of the exercises. 1 missing and expected return is FALSE
-        exercises.add(se1);
-        exercises.add(se1);
-        exercises.add(fe1);
-        exercises.add(be1);
-
-        assertFalse(p.balancedProgramCheck(exercises));
     }
 
 
@@ -128,14 +138,6 @@ public class ProgramTest { //TODO lage flere inputs og teste for flere bugs
         }
 
         assertTrue(sorted == true);
-
-        System.out.println("Test of array-sorting method" + "\n" +
-                "Numbers before: " + a + ", " + b + ", " + c + ", " + d + "\n" +
-                "Numbers after: " + p.getExerciseArrayList().get(0).getIntensity() + ", " +
-                p.getExerciseArrayList().get(1).getIntensity() + ", " +
-                p.getExerciseArrayList().get(2).getIntensity() + ", " +
-                p.getExerciseArrayList().get(3).getIntensity()
-        );
     }
 
     /** findTotalDurationTest
@@ -175,37 +177,3 @@ public class ProgramTest { //TODO lage flere inputs og teste for flere bugs
         assertTrue(expectedResult == result);
     }
 }
-
-/*
-* String name = "Testname";
-        String description = "Testdescription";
-        int intensity = 8;
-        int duration = 7;
-        int reps = 6;
-        int sets = 3;
-        String equipment = "Test Equipment";
-        int weights = 55;
-
-        StrengthExercise strengthExercise = new StrengthExercise(name,description,intensity,duration,reps,sets,equipment,weights);
-
-        strengthExercise.setName(name);
-        strengthExercise.setDescription(description);
-        strengthExercise.setIntensity(intensity);
-        strengthExercise.setDuration(duration);
-        strengthExercise.setRepetitions(reps);
-        strengthExercise.setSets(sets);
-        strengthExercise.setEquipment(equipment);
-        strengthExercise.setWeights(weights);
-
-        assertTrue(
-                name.equals(strengthExercise.eName) &&
-                description.equals(strengthExercise.eDescription) &&
-                intensity == strengthExercise.getIntensity() &&
-                duration == strengthExercise.getDuration() &&
-                reps == strengthExercise.getRepetitions() &&
-                sets == strengthExercise.getSets() &&
-                equipment.equals(strengthExercise.equipment) &&
-                weights == strengthExercise.weights
-        );
-    }
-* */
