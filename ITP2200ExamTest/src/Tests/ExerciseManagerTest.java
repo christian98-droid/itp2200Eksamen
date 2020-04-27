@@ -1,13 +1,10 @@
 package Tests;
 
 import HomeExerciseProgram.BalanceExercise;
-import HomeExerciseProgram.ExerciseManager;
 import HomeExerciseProgram.*;
 import org.junit.jupiter.api.Test;
 
-
 import java.util.ArrayList;
-import java.util.Scanner;
 
 import static HomeExerciseProgram.ExerciseManager.*;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -97,9 +94,19 @@ public class ExerciseManagerTest {
         String testcaseDecimal = "9.2"; //Expected output will be -1, decimal not allowed input
         assertTrue(parseIntensity(testcaseDecimal) == -1);
     }
+
+    /**
+     * recommendAppropriateProgramTest()
+     *
+     * This test-method is for testing for requirement 3c:
+     * "A method for recommending, from a given collection of Programs, which is most appropriate for a given Person."
+     *
+     * This method also works as an integration-test. This test simulates a lot of the functionality, without user input.
+     */
     @Test
     public void recommendAppropriateProgramTest(){
-        // 40 Exercises of different intensity and type.
+        // Adding all 40 Exercises of different intensity and type for testing purposes
+
         StrengthExercise se1 = new StrengthExercise("Knees down push-ups", "Push-ups while knees on the ground", 1, 3, 10, 3, "None", 0);
         StrengthExercise se2 = new StrengthExercise("Walking lunges", "Take one step, then get on one knee", 2, 4, 10, 3, "None/dumbbell", 0);
         StrengthExercise se3 = new StrengthExercise("Dumbbell shoulder press", "Use your dumbbell and push up over shoulders", 3, 4, 10, 3, "dumbbell", 7);
@@ -144,6 +151,8 @@ public class ExerciseManagerTest {
         BalanceExercise be9 = new BalanceExercise("Simple grapevine", "Avoid dropping your hips as you step. ", 9, 10, 3, 2, "None ");
         BalanceExercise be10 = new BalanceExercise("One foot balance pillow", "Keep your balance on the pillow, one foot", 10, 11, 6, 4, "Balancing Pillow ");
 
+
+        // We start by generating ArrayLists of exercises grouped by intensity.
         ArrayList<Exercise> exercises1 = new ArrayList<>();
         ArrayList<Exercise> exercises2 = new ArrayList<>();
         ArrayList<Exercise> exercises3 = new ArrayList<>();
@@ -155,7 +164,7 @@ public class ExerciseManagerTest {
         ArrayList<Exercise> exercises9 = new ArrayList<>();
         ArrayList<Exercise> exercises10 = new ArrayList<>();
 
-
+        // Add the exercises
         exercises1.add(se1);
         exercises1.add(ee1);
         exercises1.add(fe1);
@@ -206,7 +215,7 @@ public class ExerciseManagerTest {
         exercises10.add(fe10);
         exercises10.add(be10);
 
-
+        // From there we create different Programs, passing the exercise-arrays into them
         Program program1 = new Program(exercises1);
         Program program2 = new Program(exercises2);
         Program program3 = new Program(exercises3);
@@ -220,6 +229,8 @@ public class ExerciseManagerTest {
 
         ArrayList<Program> programs = new ArrayList<>();
 
+        //Adding ArrayList of exercises into the ArrayList of Programs so
+        // we can pass it through to the recommendAppropriateProgram method for testing
         programs.add(program1);
         programs.add(program2);
         programs.add(program3);
@@ -232,19 +243,25 @@ public class ExerciseManagerTest {
         programs.add(program10);
 
 
+        //Creating Person-objects which we can pass through to the recommendAppropriateProgram method for testing
         Person p1 = new Person("Testcase1", "Testcase1", "Testcase1", 1);
         Person p2 = new Person("Testcase2", "Testcase2", "Testcase2", 6);
         Person p3 = new Person("Testcase3", "Testcase3", "Testcase3", 2);
 
-
+        /*
+        This method iterates through all the different Program-objects in the ArrayList of Programs, and
+            stops when it finds the Program that matches the users preferred intensity. */
         recommendAppropriateProgram(p1,programs);
         recommendAppropriateProgram(p2,programs);
         recommendAppropriateProgram(p3,programs);
 
+        // The method than passes the Program with the correct acceptableIntensity to
+        // the setCurrentProgram() method inside the Person-class.
+
         assertTrue(
-                p1.getCurrentProgram().getIntensityLevel() == 1 &&
-                        p2.getCurrentProgram().getIntensityLevel() == 6 &&
-                        p3.getCurrentProgram().getIntensityLevel() == 2
+                p1.getCurrentProgram().getIntensityLevel() == 1 && //The expected value is 1, the acceptableIntensity of p1
+                        p2.getCurrentProgram().getIntensityLevel() == 6 && //The expected value is 6, the acceptableIntensity of p2
+                        p3.getCurrentProgram().getIntensityLevel() == 2 //The expected value is 2, the acceptableIntensity of p3
         );
     }
 }

@@ -50,24 +50,27 @@ public class ProgramTest { //TODO lage flere inputs og teste for flere bugs
      * This method aims to test for requirement 1B:
      * "Each program keeps account of whether or not it is balanced.
      * A balanced program has at least one exercise of each type."
-     * The first test, balancedProgramCheckTestTrue, will check if the Program will be considered balanced
-     * The second test, balancedProgramCheckTestFalse, will check if the Program will be considered not balanced
+     * The first test, balancedProgramCheckTestFalse, will check if the Program will be considered not balanced
+     * The second test, balancedProgramCheckTestTrue, will check if the Program will be considered balanced
      */
     @Test
     public void balancedProgramCheckTestFalse() {
         StrengthExercise se1 = new StrengthExercise("Biceps curl", "Curl your bicep using a dumbell", 6, 2, 3, 8, "Dumbell", 15);
         FlexibilityExercise fe1 = new FlexibilityExercise("Hamstring streach", "Streach your hamstring", 6, 5, 3, 1, "None");
         BalanceExercise be1 = new BalanceExercise("Balance pillow", "Keep your balance on the pillow", 6, 3, 6, 4, "Balancing ");
+        StrengthExercise se2 = new StrengthExercise("Walking lunges", "Take one step, then get on one knee", 2, 4, 10, 3, "None/dumbbell", 0);
 
         ArrayList<Exercise> exercises = new ArrayList<>();
 
-        //Adding 3 of the 4 needed exercises to be considered balanced. 1 missing and expected return is FALSE
+        //Adding 3 of the 4 needed exercises to be considered balanced. Endurance missing and expected return is FALSE
         exercises.add(se1);
+        exercises.add(se2);
         exercises.add(fe1);
         exercises.add(be1);
 
         Program p = new Program(exercises);
 
+        //Checking if the method returns the expected FALSE
         assertFalse(p.balancedProgramCheck(exercises));
     }
 
@@ -80,7 +83,7 @@ public class ProgramTest { //TODO lage flere inputs og teste for flere bugs
 
         ArrayList<Exercise> exercises = new ArrayList<>();
 
-        //Adding one of each exercise
+        //Adding one of each exercise to make the program balanced
         exercises.add(se1);
         exercises.add(ee1);
         exercises.add(fe1);
@@ -98,7 +101,7 @@ public class ProgramTest { //TODO lage flere inputs og teste for flere bugs
      * "Each program has the exercises sorted in order of increasing intensity."
      */
     @Test
-    public void arraySortedByIntensityTest() {
+    public void arraySortedByIntensityTestTrue() {
         StrengthExercise se1 = new StrengthExercise("Benchpress", "x", 0, 5, 8, 3, "x", 70);
         EnduranceExercise ee1 = new EnduranceExercise("Intervalls", "x", 0, 6, 10, 0, "x");
         FlexibilityExercise fe1 = new FlexibilityExercise("Stretch", "x", 0, 10, 0, 0, "x");
@@ -119,25 +122,59 @@ public class ProgramTest { //TODO lage flere inputs og teste for flere bugs
         exercises.get(2).setIntensity(10);
         exercises.get(3).setIntensity(7);
 
-        //variables for print output
-        int a = exercises.get(0).getIntensity();
-        int b = exercises.get(1).getIntensity();
-        int c = exercises.get(2).getIntensity();
-        int d = exercises.get(3).getIntensity();
+        //Passing the array to the Program-class will automatically sort it through the Overridden Comparator-method
+        //which can be found in line 25~
+        Program p = new Program(exercises);
+
+        boolean sorted = true;
+
+        for (int i = 0; i < p.getExerciseArrayList().size() - 1; i++) {
+            if(!((p.getExerciseArrayList().get(i).getIntensity()) < (p.getExerciseArrayList().get(i + 1).getIntensity()))) {
+                sorted = false;
+                break;
+            }
+        }
+
+        assertTrue(sorted);
+    }
+    @Test
+    public void arraySortedByIntensityTestFalse() {
+        StrengthExercise se1 = new StrengthExercise("Benchpress", "x", 0, 5, 8, 3, "x", 70);
+        EnduranceExercise ee1 = new EnduranceExercise("Intervalls", "x", 0, 6, 10, 0, "x");
+        FlexibilityExercise fe1 = new FlexibilityExercise("Stretch", "x", 0, 10, 0, 0, "x");
+        BalanceExercise be1 = new BalanceExercise("Jumprope", "x", 0, 5, 0, 3, "x");
+
+        ArrayList<Exercise> exercises = new ArrayList<>();
+
+        exercises.add(se1);
+        exercises.add(ee1);
+        exercises.add(fe1);
+        exercises.add(be1);
+
+        /**
+         * Use these setters for test-input
+         */
+        exercises.get(0).setIntensity(9);
+        exercises.get(1).setIntensity(4);
+        exercises.get(2).setIntensity(10);
+        exercises.get(3).setIntensity(7);
 
         //Passing the array to the Program-class will automatically sort it through the Overridden Comparator-method
         //which can be found in line 25~
         Program p = new Program(exercises);
 
-        boolean sorted = false;
+        boolean sorted = true;
+
+        p.getExerciseArrayList().get(1).setIntensity(10);
 
         for (int i = 0; i < p.getExerciseArrayList().size() - 1; i++) {
-            if (p.getExerciseArrayList().get(i).getIntensity() < p.getExerciseArrayList().get(i + 1).getIntensity()) {
-                sorted = true;
+            if(!((p.getExerciseArrayList().get(i).getIntensity()) < (p.getExerciseArrayList().get(i + 1).getIntensity()))) {
+                sorted = false;
+                break;
             }
         }
 
-        assertTrue(sorted == true);
+        assertFalse(sorted);
     }
 
     /** findTotalDurationTest

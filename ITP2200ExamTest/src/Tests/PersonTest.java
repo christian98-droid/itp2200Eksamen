@@ -10,7 +10,7 @@ public class PersonTest {
     @Test
     public void personTest(){
         String fName = "Test";
-        String lName = "Value";
+        String lName = "Name";
         String prefExercise = "Strength";
         int accInt = 8;
 
@@ -34,9 +34,8 @@ public class PersonTest {
                 fName.equals(person1.getfName()) &&
                         lName.equals(person1.getlName()) &&
                         prefExercise.equals(person1.getPreferredExercise()) &&
-                        accInt == person1.getAcceptableIntensity() &&
-                        program.equals(person1.getCurrentProgram())
-
+                        (accInt == person1.getAcceptableIntensity()) &&
+                        program.toString().equals(person1.getCurrentProgram().toString())
         );
     }
 }
