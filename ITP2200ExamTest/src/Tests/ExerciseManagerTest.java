@@ -10,38 +10,13 @@ import static HomeExerciseProgram.ExerciseManager.*;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class ExerciseManagerTest {
-    @Test
-    public void generateUserTest(){
-    }
 
-    @Test
-    public void generateBalanceExerciseTest(){
-        /*
-        String eName;
-        String eDescription;
-        String equipment;
-        int intensityInt;
-        int durationInt;
-        int repetitionsInt;
-        int setsInt;
-
-
-        generateBalanceExercise().eName = "test";
-        generateBalanceExercise().eDescription = "testy";
-        generateBalanceExercise().equipment = "tesda";
-        generateBalanceExercise().intensity = 1;
-        generateBalanceExercise().duration = 2;
-        generateBalanceExercise().repetitions = 3;
-        generateBalanceExercise().sets = 5;
-
-        generateBalanceExercise().
-*/
-    }
-
-    /** The method tested in the following tests can be found in the ExerciseManager class.
+        /** The method tested in the following tests can be found in the ExerciseManager class.
+         *
+         *
      * This test aims to test the output of the method stringToIntConverter given
      * different possible inputs from the user. The aim is to not crash our program and provide the program
-     * an oppertunity to give the user another chance to input data.
+     * an opportunity to give the user another chance to input data.
      * We accomplish that by exception handling with a try-catch statement.
      */
     @Test
@@ -256,7 +231,7 @@ public class ExerciseManagerTest {
         recommendAppropriateProgram(p3,programs);
 
         // The method than passes the Program with the correct acceptableIntensity to
-        // the setCurrentProgram() method inside the Person-class.
+        // the setCurrentProgram() method inside the Person-class and assigns it to the selected Person.
 
         assertTrue(
                 p1.getCurrentProgram().getIntensityLevel() == 1 && //The expected value is 1, the acceptableIntensity of p1

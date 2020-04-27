@@ -289,8 +289,7 @@ public class ExerciseManager {
         equipment = scanner.nextLine();
 
         // Intensity
-        do { //This do-while loop executes once, and continue executing like like a loop so long as the
-            // statement in the while-loop is = true
+        do { //This do-while loop executes once, and continue executing like like a loop so long as the statement in the while-loop is = true
             System.out.println("Enter intensity (1-10):");
             String intensityInput = scanner.nextLine();
             intensityInt = parseIntensity(intensityInput); //User input gets passed through
@@ -558,6 +557,12 @@ public class ExerciseManager {
     public static void recommendAppropriateProgram(Person p, ArrayList<Program> programs){
 
         switch (p.getAcceptableIntensity()) {
+
+            /**
+             * This method passes in a Person object and a ArrayList of Program-objecs, also containing an
+             * ArrayList of of exercises. The method iterates through the ArrayList and finds the Program with the
+             * preferred intensity selected by the user, and prints this out to the user. Let the workout begin!
+             */
 
             case 1:
                 for(Program program : programs){

@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
-public class ProgramTest { //TODO lage flere inputs og teste for flere bugs
+public class ProgramTest {
 
     /** findHighestIntensityTest
      * This method aims to test for requirement 1A:
@@ -166,7 +166,7 @@ public class ProgramTest { //TODO lage flere inputs og teste for flere bugs
         boolean sorted = true;
 
         //Changing the value of the second index spot from 5 t0 10 after the array has ben sorted
-        // to check if it returns false, as expected (intensities in the array is now 2,10,7,10)
+        //to check if it returns false, as expected (intensities in the array is now 2,10,7,10)
         p.getExerciseArrayList().get(1).setIntensity(10);
 
         for (int i = 0; i < p.getExerciseArrayList().size() - 1; i++) {
