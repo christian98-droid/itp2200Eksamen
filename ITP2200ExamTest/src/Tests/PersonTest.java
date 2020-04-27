@@ -36,6 +36,7 @@ public class PersonTest {
                         prefExercise.equals(person1.getPreferredExercise()) &&
                         accInt == person1.getAcceptableIntensity() &&
                         program.equals(person1.getCurrentProgram())
+
         );
     }
 }
