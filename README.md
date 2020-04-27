@@ -1,5 +1,7 @@
 itp2200 Eksamen
 
+The selected SDK for the project is 12 (java version 14.0.1).
+Project language 12.
 The root folder is "itp2200Eksamen"
 src folder is "itp2200Eksamen/ITP2200ExamTest/src"
 We have used Junit (org.junit.jupiter:junit-jupiter:5.4.2) to conduct our testing
